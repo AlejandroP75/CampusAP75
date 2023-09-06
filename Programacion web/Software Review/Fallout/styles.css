@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-image: url(fondo-VhrYnYLwN-transformed.jpeg);
+    background-image: url(img/fondo-VhrYnYLwN-transformed.jpeg);
 }
 
 header {
@@ -53,10 +53,36 @@ img {
 .down {
     display: flex;
     width: 100%;
+    height: 50px;
+    justify-content: center;
 }
 
 .down2 {
     width: 900px;
     height: 50px;
-    margin-left: 25px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.cont {
+    background-color: white;
+    width: 250px;
+    height: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h1 {
+    margin: 0;
+    text-align: justify;
+}
+
+.img1 {
+    margin: 0;
+    width: 250px;
+    height: 180px;
 }
