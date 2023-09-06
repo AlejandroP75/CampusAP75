@@ -1,8 +1,7 @@
 body {
     margin: 0;
     background-image: url(img/fondo-VhrYnYLwN-transformed.jpeg);
-    margin-left: 575px;
-    margin-right: 575px;
+    width: 1150px;
 }
 
 header {
