@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    background-image: url(fondo-VhrYnYLwN-transformed.jpeg);
+}
+
+header {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.trum {
+    transform: scaleX(-1);
+    width: 150px;
+    height: 75px;
+}
+
+img {
+    width: 150px;
+    height: 75px;
+}
+
+.up {
+    margin: 0;
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+    align-self: start;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    height: 100px;
+}
+
+.destrom {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-style: italic;
+}
+
+.ti {
+    font-family: 'Rye', cursive;
+    font-size: 40px;
+    align-self: center;
+}
+
+.down {
+    display: flex;
+    width: 100%;
+}
+
+.down2 {
+    width: 900px;
+    height: 50px;
+    margin-left: 25px;
+}

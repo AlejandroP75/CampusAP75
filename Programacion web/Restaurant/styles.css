@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+}
+
+h1 {
+    margin: 20px;
+}
+
+nav {
+    display: flex;
+    margin: 20px;
+}
+
+a {
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: red;
+    font-size: x-large;
+}

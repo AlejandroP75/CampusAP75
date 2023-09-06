@@ -1,0 +1,12 @@
+{
+    "1": {
+        "Nombre": "Alejandro",
+        "Edad": 22,
+        "Peso": 61.0
+    },
+    "2": {
+        "Nombre": "Diego",
+        "Edad": 26,
+        "Peso": 40.3
+    }
+}

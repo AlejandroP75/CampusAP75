@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas HTML</title>
+    <style>
+        table {border: 1px solid black; 
+            width:100%;
+            background-color: gainsboro;
+            border-collapse: collapse;}
+        td {border: 1px solid black; 
+            padding: 10px;
+            color: black;
+            text-align: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+        th {text-align: center;
+            padding: 10px;
+            border: 1px solid black;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+        caption {background-color: black;
+                color: white;
+                padding: 10px;
+                font-size: x-large;}
+    </style>
+</head>
+<body>
+    <table>
+        <caption><strong>AGENDA ACME</strong></caption>
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>8:00 - 10:00</th>
+                <th>10:00 - 12:00</th>
+                <th>12:00 - 14:00</th>
+                <th>14:00 - 16:00</th>
+                <th>16:00 - 18:00</th>
+                <th>18:00 - 20:00</th>
+                <th>20:00 - 22:00</th>
+            </tr>
+            <tr>
+                <th>Lunes</th>
+                <td>Squash</td>
+                <td rowspan="2">Trabajo <br>Admin</td>
+                <td rowspan="5">Almuerzo</td>
+                <td rowspan="5" colspan="4">CAMPUS</td>
+            </tr>
+            <tr>
+                <th>Martes</th>
+                <td>Baloncesto</td>
+            </tr>
+            <tr>
+                <th>Miercoles</th>
+                <td rowspan="3">Pokemon<br>Go</td>
+                <td>SENA</td>
+            </tr>
+            <tr>
+                <th>Jueves</th>
+                <td rowspan="2">Curso<br>Excel</td>
+            </tr>
+            <tr>
+                <th>Viernes</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

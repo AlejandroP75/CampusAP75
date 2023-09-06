@@ -1,0 +1,40 @@
+{
+    "pets": [
+        {
+            "tipo":"Gato",
+            "raza": "Persa",
+            "talla": "Mediano",
+            "precio": 100000,
+            "servicios": [
+                "Vacunas",
+                "Baño",
+                "Alimento",
+                "Juguetes"
+            ]
+        },
+        {
+            "tipo":"Perro",
+            "raza": "Pastor Alemán",
+            "talla": "Grande",
+            "precio": 20000,
+            "servicios": ["Hotel"]
+        },
+        {
+            "tipo":"Perro",
+            "raza": "Pastor Collins",
+            "talla": "Grande",
+            "precio": 15000,
+            "servicios": ["Baño"]
+        },
+        {
+            "tipo":"Chanchito",
+            "raza": "Tiny Rose",
+            "talla": "Pequeño",
+            "precio": 40000,
+            "servicios": [
+                "Vacunas",
+                "Alimento"
+            ]
+        }
+    ]
+}

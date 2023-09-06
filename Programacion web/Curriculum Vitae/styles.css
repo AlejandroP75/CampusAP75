@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
+/*HEADER*/
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.title {
+    color: white;
+    font-size: 45px;
+    padding: 15px;
+    margin: 0;
+}
+
+.links{
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: xx-large;
+}
+
+.menu{
+    color: white;
+    text-decoration: none;
+}
+
+.menu:hover{
+    color: red;
+    text-decoration:none;
+}
+
+/*SUMMARY*/
+
+.secSumm {
+    display: flex;
+    background-color: white;
+}
+
+.imgCV {
+    width: 34%;
+}
+
+.divSumm {
+    width: 66%;
+    background-color: gray;
+}
+
+.titleSumm {
+    text-align: center;
+    color: white;
+    font-size: 150px;
+    margin: 0;
+}
+
+.paragraph{
+    text-align: justify;
+    margin: auto;
+    font-size: 52px;
+    padding: 80px 50px 0 50px;
+}
+
+/*EXPERIENCE*/
+
+.secExp {
+    display: flex;
+    background-color: rgb(62, 55, 55);
+    margin: 0px 0px 0px 0px;
+}
+
+.titleExp {
+    text-align: center;
+    color: white;
+    font-size: 150px;
+    margin: 0;
+}
+
+.paragraphExp{
+    text-align: justify;
+    margin: auto;
+    font-size: 40px;
+    padding: 80px 50px 0 50px;
+    color: rgb(206, 199, 199);
+    margin-bottom: 20px;
+    line-height: 70px;
+}
+
+.divExp {
+    width: 75%;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.imgExp {
+    width: 20%;
+    height: 225px;
+    margin: auto;
+    padding: auto;
+}
+
+/*SKILLS*/
+
+.secSkills {
+    display: flex;
+    background-color: azure;
+}
+
+.imgSki {
+    width: 30%;
+    margin: auto;
+}
+
+.divSki{
+    width: 70%;
+}
+
+.titleSki {
+    text-align: center;
+    color: black;
+    font-size: 150px;
+    margin: 0;
+}
+
+.paragraphSki{
+    text-align: justify;
+    margin: auto;
+    font-size: 40px;
+    padding: 20px 50px 0 310px;
+    color: rgb(82, 80, 80);
+    line-height: 70px;
+    width: 70%;
+}
+
+/*CONTACT*/
+
+.secContact {
+    display: block;
+    align-items: center;
+}
+
+.ic {
+    width: 250px;
+    padding: 29px;
+}
+
