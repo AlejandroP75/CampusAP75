@@ -1,6 +1,8 @@
 body {
     margin: 0;
     background-image: url(img/fondo-VhrYnYLwN-transformed.jpeg);
+    margin-left: 575px;
+    margin-right: 575px;
 }
 
 header {
@@ -69,8 +71,7 @@ main {
 }
 
 .cont {
-    background-color: white;
-    width: 250px;
+    width: 330px;
     height: 1000px;
     padding-left: 20px;
     padding-right: 20px;
@@ -83,6 +84,57 @@ h1 {
 
 .img1 {
     margin: 0;
-    width: 250px;
-    height: 180px;
+    width: 330px;
+    height: 200px;
+}
+
+p {
+    margin: 0;
+    text-align: justify;
+}
+
+h2 {
+    margin: 0;
+    font-size: large;
+}
+
+.pip {
+    display: flex;
+}
+
+.down2 {
+    width: 100%;
+    height: 50px;
+}
+
+hr {
+    width: 95%;
+    height: 0;
+    border: medium none;
+    border-top: 3px dashed black
+}
+
+.img2 {
+    width: 330px;
+    height: 160px;
+}
+
+.img3 {
+    width: 330px;
+    height: 225px;
+}
+
+.img4 {
+    width: 330px;
+    height: 150px;
+}
+
+.img5 {
+    width: 330px;
+    height: 175px;
+}
+
+.img6 {
+    margin-right: 5px;
+    height: 100px;
 }
