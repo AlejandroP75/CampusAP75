@@ -5,6 +5,15 @@ body {
     font-size: 35px;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
 .cod {
     width: 90%;
 }
@@ -15,11 +24,10 @@ body {
     align-items: center;
     width: 10%;
     text-align: center;
-    background-color: #BDE768;
+    background: linear-gradient(#d4dc8c, 85%, white);
     margin: 5px;
     border: 5px solid gray ;
     writing-mode: vertical-rl;
-    font-size: 50px;
     margin: 10px;
 }
 
@@ -32,13 +40,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #357EC4;
+    background: linear-gradient(#44446c, 85%, white);
     width: 20%;
-    height: 300px;
+    height: 150px;
     text-align: center;
-    color: white;
     border: 5px solid gray;
-    font-size: 50px;
     margin: 10px;
 }
 
@@ -46,12 +52,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
-    height: 200px;
+    background: linear-gradient(#44446c, 85%, white);
+    height: 125px;
     text-align: center;
     border: 5px solid gray;
-    font-size: 50px;
     margin: 10px;
+    color: white;
 }
 
 .dual {
@@ -61,8 +67,12 @@ body {
 }
 
 .d1 {
-    background-color: forestgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#d4dc34, 85%, white);
     width: 50%;
+    height: 150px;
     margin: 10px;
     text-align: center;
     border: 5px solid gray;
@@ -72,9 +82,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 90px;
     text-align: center;
     border: 5px solid gray;
-    background-color: yellowgreen;
+    background: linear-gradient(#d4dc34, 85%, white);
+    margin: 10px;
+}
+
+.b2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    text-align: center;
+    border: 5px solid gray;
+    background: linear-gradient(orange, 85%, white);
+    margin: 10px;
+}
+
+.b3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    text-align: center;
+    border: 5px solid gray;
+    background: linear-gradient(#6c747c, 85%, white);
     margin: 10px;
 }
