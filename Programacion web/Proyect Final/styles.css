@@ -1,29 +1,17 @@
-body {
-    margin: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.imgPri {
     width: 100%;
-    height: 100px;
-    background-color: black;
 }
 
-header img {
-    background-color: white;
-    margin-left: 40px;
-    width: 100px;
-    height: 90px;
+.logo {
+    width: 200px;
 }
 
-header nav {
-    margin-right: 40px;
+main h1 {
+    margin: 20px;
+    text-align: center;
 }
 
-nav a {
-    margin: 10px;
-    text-decoration: none;
-    color: white;
+main p {
+    margin: 20px;
+    text-align: justify;
 }
