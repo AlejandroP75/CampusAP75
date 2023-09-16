@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-rows: repeat(3, 200px); /* Tres filas de 200px de altura */
+            grid-template-columns: repeat(4, 1fr); /* Cuatro columnas iguales */
+            grid-gap: 10px;
+        }
+
+        .grid-item {
+            border: 3px solid #eb1c1c;
+            padding: 10px;
+            text-align: center;
+            background-color: gray;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="" alt="Imagen 1">
+            <p>Título 1</p>
+        </div>
+        <div class="grid-item">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <p>Título 2</p>
+        </div>
+        <!-- Agrega más elementos aquí -->
+        <div class="grid-item">
+            <img src="imagen1.jpg" alt="Imagen 3">
+            <p>Título 1</p>
+        </div>
+        <div class="grid-item">
+            <img src="imagen2.jpg" alt="Imagen 4">
+            <p>Título 2</p>
+        </div>
+        <div class="grid-item">
+            <img src="imagen1.jpg" alt="Imagen 1">
+            <p>Título 1</p>
+        </div>
+        <div class="grid-item">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <p>Título 2</p>
+        </div>
+       
+    </div>
+</body>
+</html>

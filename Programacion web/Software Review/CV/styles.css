@@ -1,0 +1,93 @@
+/*BACKGROUND*/
+
+/* color: #091834, color: #184153, color: #71828d, color: #c4c6c8, color: #f3f3f3 */
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.mid {
+    background-color: white;
+    width: 1500px;
+    height: 5500px;
+}
+
+/*HEADER*/
+
+header {
+    display: flex;
+    background-color: #260101;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    width: 1500px;
+    position: fixed;
+}
+
+header > h1 {
+    color: #f3f3f3;
+    margin: 0 50px 0 50px;
+    font-size: 50px;
+}
+
+ul > a {
+    margin: 0 25px 0 25px;
+    font-size: 25px;
+    text-decoration: none;
+    color: #f3f3f3;
+}
+
+ul > a:hover {
+    color: #c4c6c8;
+    font-size: 50px;
+}
+
+.sep {
+    height: 100px;
+    width: 1500px;
+}
+
+/*SUMMARY*/
+
+.sum {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: #184153;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photo {
+    width: 500px;
+    border-color: #f3f3f3;
+}
+
+.descrip {
+    display: row;
+    justify-content: center;
+    width: 50%;
+    text-align: justify;
+    font-size: 40px;
+    color: #f3f3f3;
+}
+
+.tipDes {
+    color: #c4c6c8;
+    text-align: center;
+    font-size: 100px;
+    margin: 0; 
+}
+
+/*EXPERIENCE*/
+
+.exp {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: #71828d;
+}
