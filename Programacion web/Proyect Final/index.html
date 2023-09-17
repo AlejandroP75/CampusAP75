@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Support Colombia</title>
 </head>
 <body>
@@ -26,15 +27,17 @@
         </ul>
       </nav>
     </header>
-    <div class="cjimg">
-      <img class="imgPri" src="principal.jpg" alt="principal">
-    </div>
+    <div class="fullscreen-container">
+      <video loop muted autoplay poster="dist/img/office.jpg" class="fullscreen-video">
+          <source src="pexels-tima-miroshnichenko-6170605 (Original).mp4" type="video/mp4">
+      </video>
+  <hr>
+  </div>
     <main>
-        <h1>¿Quienes somos?</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi praesentium, error molestiae harum tempora ullam adipisci consequatur non quo cupiditate porro sed ducimus voluptatum ipsum mollitia optio dolorem debitis reiciendis!
-        Incidunt accusamus repellat perspiciatis, voluptate quasi neque aspernatur aut pariatur modi nam dolorum? Aperiam dolorum maxime asperiores nostrum atque similique impedit vel provident ipsa, nam assumenda explicabo autem, reiciendis amet!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima enim tempora unde exercitationem nemo, delectus, illo nihil voluptate corporis rerum officiis quas, tempore dolorem quod. Nulla facilis eius in quibusdam!
+        <h1 class="tit">¿Quienes somos?</h1>
+        <p class="text">Somos una empresa santandereana encargada de brindar soluciones logísticas de apoyo en todas las áreas de las empresas, a través de personal capacitado y dispuesto a realizar las labores requeridas con responsabilidad y calidad. Nuestros servicios se diferencian porque ofrecemos previa asesoría ajustada a las necesidades de nuestros clientes generando resultados completos y rentables.
         </p>
+        <hr>
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -65,8 +68,24 @@
             </button>
           </div>
     </main>
-    <section>
-        <h1>Hola q ase ñero</h1>
+    <hr>
+    <h1 class="tit">Clientes actuales</h1>
+    <section class="clientes">
+        <img class="cli" src="kikes.png" alt="huevos kikes">
+        <br>
+        <h2>Huevos kikes</h2>
+        <img class="cli" src="exprecar.png" alt="">
+        <br>
+        <h2>Transportes exprecar</h2>
+        <img class="cli" src="alcampo.jpg" alt="">
+        <br>
+        <h2>Alcampo</h2>
+        <img class="cli" src="arintia.png" alt="">
+        <br>
+        <h2>Arintia Group</h2>
+        <img class="cli" src="ega kat.png" alt="">
+        <br>
+        <h2>Ega Kat</h2>
     </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
