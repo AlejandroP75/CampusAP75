@@ -45,7 +45,8 @@ header ul {
     color: #243260;
     padding: 10px;
     border-radius: 10px;
-    font-weight: 500
+    font-weight: 500;
+    font-size: 25px;
 }
 
 ul a:hover {
@@ -92,7 +93,7 @@ ul a:hover {
 .titulos {
     text-align: center;
     color: #E53E1E;
-    font-size: 55px;
+    font-size: 45px;
 }
 
 .texto {
@@ -160,3 +161,70 @@ div h2 {
     width: 50px;
 }
 
+/*Nosotros*/
+
+.equipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nomper {
+    font-size: xx-large;
+    color: #243260;
+}
+
+.carper {
+    font-size: x-large;
+    color: gray;
+}
+
+.misvis {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.textomisvis {
+    width: 30%;
+    text-align: justify;
+    color: #243260;
+    font-size: 25px;
+}
+
+.imgmisvis {
+    width: 25%;
+    border-radius: 100%;
+}
+
+.serv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px;
+}
+
+.textoserv {
+    width: 30%;
+    text-align: justify;
+    color: #243260;
+    font-size: 25px;
+}
+
+.imgserv {
+    width: 25%;
+    border-radius: 10%;
+}
+
+.tituloss {
+    text-align: left;
+}
+
+.cont {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.contacts {
+    font-size: larger;
+}
