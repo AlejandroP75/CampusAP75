@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function abrir_ventana(){
+            window.open("http://www.cnice.mec.es")
+        }
+        function parar(){
+            clearTimeout(pop)
+        }
+        pop = setInterval("abrir_ventana()", 2000);
+    </script>
+</head>
+<body>
+    <input type="button" value="Parar las ventanas" onclick="parar()">
+</body>
+</html>
