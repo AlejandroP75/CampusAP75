@@ -1,27 +1,38 @@
-//Generamos el numero aleatorio
-function Alea(){
-    return Math.round(Math.random() * (11 - 1) + 1);
-}
-var num1 = document.querySelector(".num1");
-var num2 = document.querySelector(".num2");
-num1 = Alea();
-num2 = Alea();
-//Llamamos a los elemntos creados en el html
+let butt1 = document.querySelector(".generarAlea1");
+let butt2 = document.querySelector(".generarAlea2");
+let butt3 = document.querySelector(".add");
+let num1 = document.querySelector(".num1");
+let num2 = document.querySelector(".num2");
+let fibbo = [1, 1, 2, 3, 5, 8, 13];
+let n1 = 0;
+let n2 = 0;
 
-function generaTion(){
-
-    num1 = Alea();
-    num2 = Alea();
-
-    if(num1 > num2){
-        console.log("This is a test")
-
+function generarNum1(){
+    n1 = Math.floor(Math.random() * 11) + 1;
+    num1.textContent = n1;
+    if(n2 != 0){
+        let n3 = n1 + n2;
+        fibbo.forEach((element) => {
+            if(element == n3){
+                alert("The number is fibonacci");
+            }
+        })
     }
 }
-//Añadir el evento
 
-const botonAleatorio1 = document.querySelector(".generarAlea1");
-botonAleatorio1.addEventListener("click", generaTion);
+function addition(){
+    n2 = Math.floor(Math.random() * 11) + 1;
+    num2.textContent = n2;
+    if(n1 != 0){
+        let n3 = n1 + n2;
+        fibbo.forEach((element) => {
+            if(element == n3){
+                alert("The number is fibonacci");
+            }
+        })
+    }
 
-const botonAleatorio2 = document.querySelector(".generarAlea2");
-botonAleatorio2.addEventListener("click", generaTion);
+}
+
+butt1.addEventListener("click", generarNum1);
+butt2.addEventListener("click", addition);
