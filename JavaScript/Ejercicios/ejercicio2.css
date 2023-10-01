@@ -1,0 +1,39 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    color: crimson;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    text-align: center;
+    color: gainsboro;
+    font-size: 70px;
+    margin: 20px;
+}
+
+.miFormulario {
+    border: 2px black solid;
+}
+
+button {
+    font-size: x-large;
+    padding: 20px;
+    border-radius: 100px;
+    font-weight: bold;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+

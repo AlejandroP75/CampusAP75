@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Dinámico</title>
-    <link rel="stylesheet" href="ejercicio3.css">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="SR.css">
 </head>
-<body id="bodi">
-    <h1>Formulario Dinámico</h1>
-    <form id="miFormulario">
-        <!-- Aquí se agregarán las etiquetas y cajas de texto dinámicas -->
-    </form>
-    <button class="agregarCampo">Agregar Campo Dinámico</button>
-    <button class="cambiarFondo">Cambiar el fondo de las etiquetas actuales</button>
-    <button class="eliminarEtiqueta">Eliminar la ultima etiqueta</button>
 
-    <script src="ejercicio3.js"></script>
+<body>
+    <h1>Lista de tareas</h1>
+    <div class="contenedor">
+        <textarea name="tarea" id="tarea" cols="30" rows="10"></textarea>
+        <button id="botAñadir">Añadir tarea</button>
+    </div>
+    <script src="SR.js"></script>
 </body>
+
 </html>
