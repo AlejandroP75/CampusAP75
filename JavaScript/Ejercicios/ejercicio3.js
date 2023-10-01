@@ -1,18 +1,37 @@
 let d = document;
 const contenedor = d.querySelector(".contenedor");
-
+const botonAñadirTarea = d.querySelector("#botAñadir");
+let cajaTexto = d.querySelector("#tarea");
+let checko = 0;
 
 function añadirTarea() {
-    const tarea = d.querySelector("#tarea").value;
+    let tarea = cajaTexto.value;
     if (tarea == "") {
-        alert("No sea bobo perro hp no puede añadir una tarea vacia");
+        alert("No puedes agregar una tarea vacia");
         return;
     }
-    const nuevaTarea = d.createElement("checkbox");
+    let miniCaja = d.createElement("div");
+    miniCaja.setAttribute("style", "display: flex;");
 
-    nuevaTarea.textContent = tarea;
-    contenedor.appendChild(nuevaTarea);
+
+    let check = d.createElement("input");
+    check.setAttribute("type" ,"checkbox");
+    checko = check;
+    let label = d.createElement("label");
+    label.textContent = tarea
+    const br = d.createElement("br");
+    let eliminar = d.createElement("button");
+    eliminar.textContent = "Eliminar";
+
+    contenedor.appendChild(miniCaja);
+    miniCaja.appendChild(check);
+    miniCaja.appendChild(label);
+    miniCaja.appendChild(br);
+    miniCaja.appendChild(eliminar);
 }
 
-const botonAñadirTarea = d.querySelector("#botAñadir");
+function marcar() {
+    console.log("This is a test");
+}
+
 botonAñadirTarea.addEventListener("click", añadirTarea);

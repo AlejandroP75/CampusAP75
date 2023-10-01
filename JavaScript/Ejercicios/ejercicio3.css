@@ -1,6 +1,6 @@
 body {
-    background-color: gray;
-    color: white;
+    background-color: gainsboro;
+    color: black;
     text-align: center;
     display: flex;
     flex-direction: column;
