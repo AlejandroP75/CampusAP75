@@ -6,13 +6,14 @@ body {
     align-items: center;
     justify-content: center;
     background-color: gray;
+    color: crimson;
     font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {
     text-align: center;
     color: gainsboro;
-    font-size: 85px;
+    font-size: 70px;
     margin: 20px;
 }
 
@@ -21,8 +22,8 @@ h1 {
 }
 
 button {
-    font-size: xx-large;
-    padding: 50px;
+    font-size: x-large;
+    padding: 20px;
     border-radius: 100px;
     font-weight: bold;
     border: 2px solid black;
@@ -35,3 +36,4 @@ button:hover {
     font-weight: bold;
     margin-bottom: 20px;
 }
+
