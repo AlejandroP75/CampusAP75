@@ -8,16 +8,19 @@
 </head>
 <body>
     <h1>Calculadora de descuentos</h1>
-    <label for="productos">Ingrese el numero de productos</label>
-    <input type="number" id="productos" placeholder="Ingrese el numero de productos">
-    <button id="ingresar">Ingresar</button>
-    <div id="dive"></div>
-    <label for="descuento">Porcentaje de descuento:</label>
-    <input type="number" id="descuento" placeholder="Ingrese el descuento">
-    <button id="calcular">Calcular</button>
-    <div id="resultados"></div>
+    <label for="nomProdu">Caracteristicas del producto</label>
+    <div class="contenedor">
+        <input type="text" placeholder="Ingrese el nombre del producto" id="nomProdu">
+        <input type="number" placeholder="Ingrese el precio del producto" id="preProdu">
+        <button id="botAñad">Añadir</button>
+    </div>
+    <label for="porcentaje">Porcentaje de descuento</label>
+    <div class="contenedor">
+        <input type="number" id="porcentaje" placeholder="Ingrese el % del descuento">
+        <button id="botCalc">Calcular</button>
+    </div>
+    <div id="listProdu"></div>
+    <div id="listDescProdu"></div>
     <script src="ejercicio4.js"></script>
 </body>
 </html>
-
-<div style="display: flex;"></div>
