@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="e2.css" id="estilos">
     <title>Document</title>
 </head>
 <body>
-    <label>Ingrese el valor de a: </label>
+    <h1>Cálculo aritmético de raíces de la función cuadrática</h1>
+    <label>Ingrese el valor de a:     </label>
     <input type="number" id="a"><br><br>
-    <label>Ingrese el valor de b:</label>
+    <label>Ingrese el valor de b:     </label>
     <input type="number" id="b"><br><br>
-    <label>Ingrese el valor de c:</label>
+    <label>Ingrese el valor de c:     </label>
     <input type="number" id="c"><br><br>
     <button id="boton">Calcular</button><br>
-    <p id="x1">x1</p>
-    <p id="x2">x2</p>
+    <p id="x1">x1 = ?</p>
+    <p id="x2">x2 = ?</p>
+    <br><br>
+    <label for="estiloSelector">Estilo: </label>
+    <select id="estiloSelector">
+        <option value="estilo1">Estilo 1 (Oscuro)</option>
+        <option value="estilo2">Estilo 2 (Claro)</option>
+        <option value="estilo3">Estilo 3 (Intermedio)</option>
+    </select>
+    <button id="guardarEstilo">Guardar Estilo</button>
 
     <script src="e2.js"></script>
 </body>

@@ -1,6 +1,46 @@
-/* Estilo Temático 1 (Azul) */
-#estilo {
-    background-color: #3498db;
-    color: #fff;
+body{
+    background-color: #280904;
+    color: #fc4b2a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+label{
+    font-weight: bold;
+    color: #c21b12;
+    margin-right: 20px;
+    font-size:x-large;
 }
 
+input{
+    border-radius: 20px;
+    width: 50px;
+    font-size: large;
+    padding: 15px;
+    text-align: center;
+}
+
+button{
+    background-color: #fc4b2a;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: #9a151a;
+}
+
+button:hover{
+    background-color: #680e34;
+    color: #c21b12;
+}
+
+p{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+select{
+    font-size: larger;
+    margin-right: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
