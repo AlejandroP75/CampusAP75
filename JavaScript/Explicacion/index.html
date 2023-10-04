@@ -1,56 +1,439 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <title>Arrays</title>
-    </head>
-    <body>
-        <nav class="navbar bg-body-tertiary fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Arrays</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">indexOf();</a>
-                        <a class="nav-link" href="#">lastindexOf();</a>
-                        <a class="nav-link" href="#">toString();</a>
-                    </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link id="estilos" rel="stylesheet" href="./estilo2.css">
+    <title>Metodos arrays</title>
+</head>
+<body>
+  <nav class="navbar fixed-top navegador px-5">
+    <div class="container-fluid">
+        <div>
+          <select id="estiloSelector">
+            <option value="estilo2">Oscuro</option>
+            <option value="estilo1">Base</option>
+        </select>
+        <button id="guardarEstilo">Guardar</button>
+        </div>
+        <a class="navbar-brand oculto" href="#">indexOf - lastIndexOf - toString</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                indexOf
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#indexSyntax">Sintaxis</a></li>
+                <li><a class="dropdown-item" href="#indexDescription">Descripción</a></li>
+                <li><a class="dropdown-item" href="#indexExamples">Ejemplos</a></li>
+                <li><a class="dropdown-item" href="#indexExercises">Ejercicios</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lastindexOf
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#lastIndexSyntax">Sintaxis</a></li>
+                <li><a class="dropdown-item" href="#lastIndexDescription">Descripción</a></li>
+                <li><a class="dropdown-item" href="#lastIndexExamples">Ejemplos</a></li>
+                <li><a class="dropdown-item" href="#lastIndexExercises">Ejercicios</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                toString
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#toStringSyntax">Sintaxis</a></li>
+                <li><a class="dropdown-item" href="#toStringDescription">Descripción</a></li>
+                <li><a class="dropdown-item" href="#toStringExamples">Ejemplos</a></li>
+                <li><a class="dropdown-item" href="#toStringExercises">Ejercicios</a></li>
+              </ul>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <div class="card w-75 mb-3 mx-auto my-5">
+                <div class="card-body d-flex flex-column">
+                  <section>
+                    <h2>indexOf - Array.indexOf()</h2>
+                    <a name="indexSyntax"></a>
+                    <p>El método indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente.</p> 
+                  </section>
+                  <section>
+                    <h2>Sintaxis</h2>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token function">indexOf</span><span class="token punctuation">(</span>searchElement<span class="token punctuation">)</span>
+    <span class="token function">indexOf</span><span class="token punctuation">(</span>searchElement<span class="token punctuation">,</span> fromIndex<span class="token punctuation">)</span></code></pre>
+                    </div>
+                    <h3>Parametros</h3>
+                    <p><strong>| searchElement</strong></p>
+                    <ul>
+                      <li><p>Elemento a encontrar en el array.</p></li>
                     </ul>
-                </div>
+                    <p><strong>| fromIndex</strong> </p>
+                    <ul>
+                      <li><p>Indica el índice por el que se comienza la búsqueda. Por defecto es 0, por lo que se busca en todo el array.</p></li>
+                      <li><p>Si el índice es mayor o igual a la longitud del array, devuelve -1, ya que no se buscaría en el array.</p></li>
+                      <li><p>Si el valor es negativo, se toma restando posiciones desde el final del array. Hay que tener en cuenta que aunque el índice sea negativo, la búsqueda seguirá realizándose en un orden incremental.</p></li>
+                      <li><p>Si el índice calculado es menor de 0, la búsqueda se realizará por todo el array.</p></li>
+                    </ul>
+                    <h3>Valor de retorno</h3>
+                    <a name="indexDescription"></a>
+                    <p>El primer índice del elemento en la matriz; -1 si no se encuentra.</p>
+                  </section>
+                  <section>
+                    <h2>Descripción</h2>
+                    <a name="indexExamples"></a>
+                    <p>indexOf() compara searchElement con los elementos del array usando igualdad estricta (el mismo método que cuando se usa ===, o el operador igualdad-triple).</p>
+                  </section>
+                  <section>
+                    <h2>Ejemplos</h2>
+                    <h3>Usando indexOf()</h3>
+                    <p>El siguiente ejemplo usa indexof() para localizar valores en un array.</p>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+                      </code></pre>
+                    </div>
+                    <p>No pudes usar indexOf() para buscar NaN.</p>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">NaN</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span></code></pre>
+                    </div>
+                    <h3>Encontrar todas las apariciones de un elemento</h3>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> idx <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>idx <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      indices<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      idx <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>indices<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// [0, 2, 4]</span></code></pre>
+                    </div>
+                    <h3>Encontrar si un elemento existe en la matriz o no y actualizar la matriz</h3>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>   <span class="token keyword">function</span> <span class="token function">updateVegetablesCollection</span><span class="token punctuation">(</span><span class="token parameter">veggies<span class="token punctuation">,</span> veggie</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>veggies<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>veggie<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        veggies<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>veggie<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">New veggies collection is: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>veggies<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>veggie<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> already exists in the veggies collection.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">const</span> veggies <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"potato"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span><span class="token punctuation">,</span> <span class="token string">"chillies"</span><span class="token punctuation">,</span> <span class="token string">"green-pepper"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    <span class="token function">updateVegetablesCollection</span><span class="token punctuation">(</span>veggies<span class="token punctuation">,</span> <span class="token string">"spinach"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// New veggies collection is: potato,tomato,chillies,green-pepper,spinach</span>
+    <span class="token function">updateVegetablesCollection</span><span class="token punctuation">(</span>veggies<span class="token punctuation">,</span> <span class="token string">"spinach"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// spinach already exists in the veggies collection.</span></code></pre>
+                    </div>
+                    <h3>Usando indexOf() en matrices dispersas</h3>
+                    <p>No puede utilizar indexOf() para buscar espacios vacíos en matrices dispersas.</p>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span></code></pre>
+                    </div>
+                    <h3>Llamar a indexOf() en objetos que no son de la matriz</h3>
+                    <p>El método indexOf() lee la propiedad de longitud de esto y luego accede a cada propiedad cuya clave sea un número entero no negativo menor que la longitud.</p>
+                    <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> arrayLike <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token number">0</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token number">1</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token number">2</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      <span class="token number">3</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment">// ignored by indexOf() since length is 3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrayLike<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 0</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrayLike<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// -1</span>
+                    </code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h2>Pruébalo tú mismo</h2>
+                    <div class="section-content">
+                      <a name="indexExercises"></a>
+                      <iframe id="myiframe" class="interactive is-js-height" height="450"  src="https://interactive-examples.mdn.mozilla.net/pages/js/array-indexof.html" title="MDN Web Docs Interactive Example" loading="lazy" data-readystate="complete"></iframe>
+                    </div>
+                  </section>
+                  <h2>Ejericios</h2>
+                  <p><strong>1.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                  <p><strong>2.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                  <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          Respuesta #1
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          Respuesta #2
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
-            </nav>
-            
-            <main>
-                <div class="card w-75 mb-3 mx-auto">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+
+            <div class="card w-75 mb-3 mx-auto my-5">
+              <div class="card-body d-flex flex-column">
+                <section>
+                  <h2>lastIndexOf - Array.lastIndexOf()</h2>
+                  <a name="lastIndexSyntax"></a>
+                  <p>El método lastIndexOf() devuelve el último índice en el que un cierto elemento puede encontrarse en el array, ó -1 si el elemento no se encontrara. El array es recorrido en sentido contrario, empezando por el índice fromIndex.</p>
+                </section>
+                <section>
+                  <h2>Sintaxis</h2>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token function">lastIndexOf</span><span class="token punctuation">(</span>searchElement<span class="token punctuation">)</span>
+    <span class="token function">lastIndexOf</span><span class="token punctuation">(</span>searchElement<span class="token punctuation">,</span> fromIndex<span class="token punctuation">)</span></code></pre>
+                  </div>
+                  <h3>Parametros</h3>
+                  <p><strong>| searchElement</strong></p>
+                  <ul>
+                    <li><p>Elemento a encontrar en el array.</p></li>
+                  </ul>
+                  <p><strong>| fromIndex</strong></p>
+                  <ul>
+                    <li><p>El índice en el que empieza la búsqueda en sentido contrario. Por defecto la longitud del array menos uno (arr.length - 1), es decir, todo el array será recorrido.</p></li>
+                    <li><p>Si el índice es mayor o igual que la longitud del array, todo el array será recorrido. Si es un valor negativo, se usará como inicio del desplazamiento el final del array.</p></li>
+                    <li><p>Hay que darse cuenta que aún cuando el índice es negativo, el array todavía será recorrido desde atrás hacia delante. Si el índice calculado es menor de 0, se devolverá -1, es decir, el array no será recorrido./p></li>
+                  </ul>
+                  <h3>Valor de retorno</h3>
+                  <a name="lastIndexDescription"></a>
+                  <p>El último índice del elemento en el array; -1 si no se encuentra.</p>
+                </section>
+                <section>
+                  <h2>Descripción</h2>
+                  <p>lastIndexOf compara searchElement con los elementos del array usando igualdad estricta (en-US) (el mismo método es usado para la ===, operador triple igualdad).</p>
+                  <p>El método lastIndexOf() omite espacios vacíos en arrays dispersos.</p>
+                  <a name="lastIndexExamples"></a>
+                  <p>El método lastIndexOf() es genérico. Solo espera que este valor tenga una propiedad de longitud y propiedades de clave entera.</p>
+                </section>
+                <section>
+                  <h2>Ejemplos</h2>
+                  <h3>Usando lastIndexOf()</h3>
+                  <p>El siguiente ejemplo usa lastIndexOf para encontrar valores en un array.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+    numbers<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span></code></pre>
+                  </div>
+                  <p>No puedes usar lastIndexOf() para buscar NaN.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">NaN</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span></code></pre>
+                  </div>
+                  <h3>Encontrar todas las apariciones de un elemento</h3>
+                  <p>El siguiente ejemplo uses lastIndexOf encuentra todos los índices de un elemento en un array dado, usando push añadiéndolos a otro array como elementos encontrados.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> idx <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>idx <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      indices<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      idx <span class="token operator">=</span> idx <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> array<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> idx <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>indices<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// [4, 2, 0]</span></code></pre>
+                  </div>
+                  <p>Darse cuenta que en este caso tenemos que tratar idx == 0 de forma separada por que el elemento siempre será encontrado independiemente del valor del parámetro fromIndex si este es el primer elemento del array. Diferente de como se trata en el método indexOf.</p>
+                  <h3>Usando lastIndexOf() en arrays dispersos</h3>
+                  <p>No puedes usar lastIndexOf() para buscar espacios basios en arrays dispersos.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1</span></code></pre>
+                  </div>
+                  <h3>Llamando lastIndexOf() en objetos que no son arrays</h3>
+                  <p>El método lastIndexOf() lee la propiedad de longitud de este y luego accede a cada propiedad cuya clave sea un número entero no negativo menor que la longitud.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> arrayLike <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token number">0</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token number">1</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token number">2</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token number">3</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment">// ignored by lastIndexOf() since length is 3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrayLike<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrayLike<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// -1</span></code></pre>
+                  </div>
+                </section>
+                
+                <section>
+                  <h2>Pruébalo tú mismo</h2>
+                  <div class="section-content">
+                    <a name="lastIndexExercises"></a>
+                    <iframe id="myiframe" class="interactive is-js-height" height="450" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-lastindexof.html" title="MDN Web Docs Interactive Example" loading="lazy" data-readystate="complete"></iframe>
+                  </div>
+                </section>
+                <h2>Ejericios</h2>
+                <p><strong>1.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                <p><strong>2.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Respuesta #1
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
                     </div>
                   </div>
-                  
-                  <div class="card w-75 mb-3 mx-auto">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Respuesta #2
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
                     </div>
                   </div>
-            </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
-    </html>
+              </div>
+            </div>
+
+            <div class="card w-75 mb-3 mx-auto my-5">
+              <div class="card-body d-flex flex-column">
+                <section>
+                  <h2>toString - Array.toString()</h2>
+                  <a name="toStringSyntax"></a>
+                  <p>El método toString() devuelve una cadena de caracteres representando el array especificado y sus elementos.</p>
+                </section>
+                <section>
+                  <h2>Sintaxis</h2>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>     <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                  </code></pre>
+                  </div>
+                  <h3>Parametros</h3>
+                  <p><strong>| Ninguno</strong></p>
+                  <h3>Valor de retorno</h3>
+                  <a name="toStringDescription"></a>
+                  <p>Una cadena de caracteres representando los elementos del array.</p>
+                </section>
+                <section>
+                  <h2>Descripción</h2>
+                  <p>El objeto Array sustituye al método toString de Object. Para los objetos Array, el método toString une el array y devuelve una cadena de caracteres que contiene cada elemento del array separado por comas. <br>
+                  JavaScript llama al método toString automáticamente cuando un array va a ser representado como un valor de texto o cuando se referencia a un array en una concatenación de caracteres.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    arr<span class="token punctuation">.</span>join <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// re-assign `join` with a non-function</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [object Array]</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token function-variable function">join</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+    </code></pre>
+                  </div>
+                  <p>Array.prototype.toString convierte recursivamente cada elemento, incluidas otras matrices, en cadenas. Debido a que la cadena devuelta por Array.prototype.toString no tiene delimitadores, los arrays anidados parecen aplanadas.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> matrix <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>matrix<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1,2,3,4,5,6,7,8,9</span>
+    </code></pre>
+                  </div>
+                  <a name="toStringExamples"></a>
+                  <p>Cuando una array es cíclica (contiene un elemento que es él mismo), los navegadores evitan la recursividad infinita ignorando la referencia cíclica.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> arr<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1,3,,4,2</span>
+    </code></pre>
+                  </div>
+                </section>
+                <section>
+                  <h2>Ejemplos</h2>
+                  <h3>Usando toString()</h3>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    <span class="token keyword">const</span> array1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"1a"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "1,2,a,1a"</span>
+    </code></pre>
+                  </div>
+                  <h3>Using toString() en arrays dispersos</h3>
+                  <p>Siguiendo el comportamiento de join(), toString() trata los espacios vacíos igual que indefinidos y produce un separador adicional.:</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '1,,3'</span>
+                  </code></pre>
+                  </div>
+                  <h3>llamando toString() en objetos que no soy un array</h3>
+                  <p>toString() es genérico. Espera que esto tenga un método join(); o, en su defecto, utiliza Object.prototype.toString() en su lugar.</p>
+                  <div class="code-example"><pre class="brush: js notranslate" data-signature="EmIkIytb7N093hjoNtA2MVX5ZhN83/gNhjyXEzUbp0A="><code>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token function-variable function">join</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1; a number</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token function-variable function">join</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">undefined</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// undefined</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">join</span><span class="token operator">:</span> <span class="token string">"not function"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// "[object Object]"</span>
+    </code></pre>
+                  </div>
+                </section>
+                
+                <section>
+                  <h2>Pruébalo tú mismo</h2>
+                  <div class="section-content">
+                    <a name="toStringExercises"></a>
+                    <iframe id="myiframe" class="interactive is-shorter-height" height="400" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-tostring.html" title="MDN Web Docs Interactive Example" loading="lazy" data-readystate="complete"></iframe>                  </div>
+                </section>
+                <h2>Ejericios</h2>
+                <p><strong>1.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                <p><strong>2.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolorum facilis, reprehenderit quos amet sed officiis saepe itaque adipisci blanditiis explicabo, vero accusantium ducimus natus dolor, dolore ratione inventore quibusdam.</p>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Respuesta #1
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Respuesta #2
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </main>
+        <footer>
+        
+        </footer>
+    </div>
+<script src="./funciones.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
