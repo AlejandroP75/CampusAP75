@@ -61,7 +61,7 @@
   .navegador{
     color: #fff;
     background-color: #545454;
-    max-width: 1080px;
+    max-width: 100%;
     margin: auto;
     position: sticky;
     left: 0;
