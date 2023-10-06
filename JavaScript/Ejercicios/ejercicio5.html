@@ -4,34 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ejercicio5.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Libreria ACME</title>
 </head>
 <body>
     <header>
         <h1>Libreria ACME</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Añadir libro</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir Libro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Url de la imagen:</label>
+                        <input type="text" class="form-control" id="linkLib">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Titulo:</label>
+                        <input type="text" class="form-control" id="titLib">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Autor:</label>
+                        <input type="text" class="form-control" id="autLib">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Año de publicación:</label>
+                        <input type="number" class="form-control" id="anioLib">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Disponible: </label><br>
+                        <select name="" id="disLib">
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Prestado A:</label>
+                        <input type="text" class="form-control" id="presLib">
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="aniaLib">Añadir libro</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
     </header>
     <main>
-        <section id="form">
-            <br>
-            <label for="linkLib">Link de la imagen: </label>
-            <input type="text" id="linkLib"><br><br>
-            <label for="titLib">Título: </label>
-            <input type="text" id="titLib"><br><br>
-            <label for="autLib">Autor: </label>
-            <input type="text" id="autLib"><br><br>
-            <label for="anioLib">Año publicado: </label>
-            <input type="number"id="anioLib"><br><br>
-            <label for="disLib">Disponible: </label>
-            <select name="" id="disLib">
-                <option value="si">Disponible</option>
-                <option value="no">Prestado</option>
-            </select><br><br>
-            <label for="presLib">Prestado A: </label>
-            <input type="text" id="presLib"><br><br>
-            <button id="aniaLib">Añadir libro</button>
-        </section>
-
+        <div class = "libros">
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+        </div>
+        <div class = "libros">
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br>
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br>
+                </p>
+            </div>
+            <div class="libro">
+                <img src="libreria/la oscurdiad de los colores.jpg" alt="">
+                <h1 class="titLibro">La oscurdiad de los colores</h1>
+                <p class="textLibro">Autor: Martin blasco <br>
+                    Año: 2015 <br>
+                    Disponible: Sí <br> 
+                </p>
+            </div>
+        </div>
+        <div id="nuevosLibros"></div>
     </main>
     <script src="ejercicio5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
