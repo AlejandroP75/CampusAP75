@@ -34,22 +34,32 @@ main{
     display: flex;
     justify-content: center;
     background-color: #E6E6E6;
+    height: auto;
 }
 
 .cont{
     display: flex;
     width: 80%;
     justify-content: center;
+    height: 100%;
 }
 
 .lateral{
     background-color: #C7C7C7;
     width: 15%;
-    height: 200px;
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding-top: 15px;
+    flex-direction: column;
+}
+
+.contRadio{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 10px;
+    font-size: large;
 }
 
 #selecOrden{
@@ -57,10 +67,57 @@ main{
     margin-left: 10px;
 }
 
-
-
-.biblio{
+#biblio{
     background-color: white;
     width: 80%;
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-left: 80px;
+    padding-bottom: 40px;
+}
+
+.libro{
+    background-color: #70160e;
+    width: 200px;
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.25s;
+}
+
+.libro:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imgLibro{
+    width: 200px;
     height: 200px;
 }
+
+.titLibro{
+    margin-top: 5px;
+    text-align: center;
+    font-size: large;
+}
+
+.btnLibro{
+    background-color: black !important;
+    color: white;
+    font-weight: bold !important;
+    border-color: #e1e3db !important;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.btnLibro:hover{
+    background-color: white !important;
+    color: black;
+}   
