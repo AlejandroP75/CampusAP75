@@ -1,36 +1,76 @@
-body{
-    background-color: rgb(127, 150, 211);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff; /* Color de fondo */
     margin: 0;
     padding: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-h1{
-    margin: 0;
-}
-
-.contenedor{
-    padding: 20px;
-    border: 5px solid white;
-    margin: 20px;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.label{
-    font-size: 25px;
+.contenedor {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-select{
-    padding: 10px;
+h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
 }
 
-input{
-    margin: 10px;
-    padding: 10px;
+h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #666;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #007BFF; /* Color del texto de etiqueta */
+}
+
+select, input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+select, input, button {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#resultadoP, #resultadoL, #resultadoT, #resultadoTi {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #009688; /* Color del texto del resultado */
 }
