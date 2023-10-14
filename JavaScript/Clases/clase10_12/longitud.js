@@ -2,6 +2,20 @@ let deL = document.getElementById("deL");
 let aL = document.getElementById("aL");
 let ingresoL = document.getElementById("ingresoL");
 let resultadoL = document.getElementById("resultadoL");
+let select1 = document.getElementById('deL');
+let select2 = document.getElementById('aL');
+
+let select = {
+    de: '',
+    a: ''
+}
+let selects = JSON.parse(localStorage.getItem('longi'));
+
+if (selects) {
+    select = selects;
+    select1.value = select.de;
+    select2.value = select.a;
+}
 
 export function longitud(){
     let deLv = deL.value;
@@ -117,5 +131,9 @@ export function longitud(){
             alert("Error! Vuelve a intentarlo !!!")
         }
     }
+    select.de = select1.value;
+    select.a = select2.value;
+
+    localStorage.setItem('longi', JSON.stringify(select));
 
 }

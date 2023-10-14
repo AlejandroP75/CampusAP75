@@ -2,6 +2,20 @@ let deP = document.getElementById("deP");
 let aP = document.getElementById("aP");
 let ingresoP = document.getElementById("ingresoP");
 let resultadoP = document.getElementById("resultadoP");
+let select1 = document.getElementById('deP');
+let select2 = document.getElementById('aP');
+
+let select = {
+    de: '',
+    a: ''
+}
+let selects = JSON.parse(localStorage.getItem('pes'));
+
+if (selects) {
+    select = selects;
+    select1.value = select.de;
+    select2.value = select.a;
+}
 
 export function peso(){
     let dePv = deP.value;
@@ -117,5 +131,9 @@ export function peso(){
             alert("Error! Vuelve a intentarlo !!!")
         }
     }
+    select.de = select1.value;
+    select.a = select2.value;
+
+    localStorage.setItem('pes', JSON.stringify(select));
 
 }

@@ -11,7 +11,7 @@ guardarEstilo.addEventListener('click', function () {
         // Guardar el estilo en Local Storage
         localStorage.setItem('estilo', estiloSeleccionado);
 
-        // Aplicar el estilo seleccionado
+        // Aplicar el estilo seleccionado0
         estilos.setAttribute('href', estiloSeleccionado + '.css');
     }
 });

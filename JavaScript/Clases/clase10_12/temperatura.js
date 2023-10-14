@@ -2,6 +2,20 @@ let deT = document.getElementById("deT");
 let aT = document.getElementById("aT");
 let ingresoT = document.getElementById("ingresoT");
 let resultadoT = document.getElementById("resultadoT");
+let select1 = document.getElementById('deT');
+let select2 = document.getElementById('aT');
+
+let select = {
+    de: '',
+    a: ''
+}
+let selects = JSON.parse(localStorage.getItem('tempe'));
+
+if (selects) {
+    select = selects;
+    select1.value = select.de;
+    select2.value = select.a;
+}
 
 export function temperatura(){
     let deTv = deT.value;
@@ -51,4 +65,8 @@ export function temperatura(){
             alert("Error! Vuelve a intentarlo !!!")
         }
     }
+    select.de = select1.value;
+    select.a = select2.value;
+
+    localStorage.setItem('tempe', JSON.stringify(select));
 }
