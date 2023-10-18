@@ -1,0 +1,103 @@
+/* Estilo general */
+body {
+    background-color: #0c0c0c;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    padding: 20px;
+}
+
+/* Estilo del encabezado de selección y botón */
+#sort-options {
+    margin-top: 20px;
+}
+
+label {
+    color: #fff;
+    font-size: 18px;
+}
+
+select {
+    font-size: 16px;
+    padding: 5px;
+}
+
+button {
+    background-color: #0073e6;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: #0055a4;
+    font-weight: bold;
+}
+
+/* Estilo de la lista de lanzamientos */
+#launch-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li {
+    background-color: #1a1a1a;
+    border: 2px solid #0073e6;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    width: 50%;
+}
+
+strong {
+    color: #0073e6;
+}
+
+/* Estilo de enlaces */
+a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+select{
+    border-radius: 25px;
+}
+
+/* Estilos para pantallas más pequeñas (media queries) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    li {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    li {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
