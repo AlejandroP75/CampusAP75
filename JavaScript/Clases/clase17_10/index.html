@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Información de Lanzamientos de SpaceX</title>
 </head>
 <body>
-    
+    <h1>Lanzamientos de SpaceX</h1>
+    <div id="sort-options">
+        <label for="sort">Ordenar por:</label>
+        <select id="sort">
+            <option value="name">Misión</option>
+            <option value="date_utc">Fecha de Lanzamiento</option>
+            <option value="success">Éxito</option>
+        </select>
+        <button id="sort-button">Ordenar</button>
+    </div>
+    <ul id="launch-list"></ul>
+    <script src="script.js"></script>
 </body>
 </html>
