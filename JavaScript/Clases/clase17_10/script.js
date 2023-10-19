@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const launchList = document.getElementById('launch-list');
-    const sortSelect = document.getElementById('sort');
-    const sortButton = document.getElementById('sort-button');
+    let launchList = document.getElementById('launch-list');
+    let sortSelect = document.getElementById('sort');
+    let sortButton = document.getElementById('sort-button');
 
-    const apiUrl = 'https://api.spacexdata.com/v4/launches';
+    let apiUrl = 'https://api.spacexdata.com/v4/launches';
 
     function fetchDataAndDisplay(sortBy) {
         fetch(apiUrl)
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 launchList.innerHTML = '';
                 data.forEach(launch => {
-                    const li = document.createElement('li');
+                    let li = document.createElement('li');
                     li.innerHTML = `<strong>Misión:</strong> ${launch.name}<br>
                                     <strong>Fecha de Lanzamiento:</strong> ${new Date(launch.date_utc).toDateString()}<br>
                                     <strong>Éxito:</strong> ${launch.success ? 'Sí' : 'No'}`;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error al cargar la API de SpaceX:', error));
     }
     sortButton.addEventListener('click', () => {
-        const sortBy = sortSelect.value;
+        let sortBy = sortSelect.value;
         fetchDataAndDisplay(sortBy);
     });
     fetchDataAndDisplay('name');
