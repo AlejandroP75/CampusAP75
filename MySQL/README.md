@@ -280,7 +280,7 @@ SELECT nombres_aprendiz, apellidos_aprendiz, edad FROM Aprendices
 WHERE id_carrera = 2;
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/4.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/10.png?raw=true)
 
 ### 5. Seleccionar Nombres de Aprendices junto al nombre de la ruta de aprendizaje que cancelaron.
 ~~~sql
@@ -290,7 +290,7 @@ INNER JOIN Rutas ON Matriculas.id_ruta = Rutas.id_ruta
 WHERE Matriculas.estado_matricula = "Cancelado";
 ~~~
 ### Resultado
-![5](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/5.png?raw=true)
+![5](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/4.png?raw=true)
 
 ### 6. Seleccionar Nombre de los cursos que no tienen un instructor asignado.
 ~~~sql
@@ -299,7 +299,7 @@ LEFT JOIN Cursos_X_Ruta ON Cursos.id_curso = Cursos_X_Ruta.id_curso
 WHERE Cursos_X_Ruta.id_instructor IS NULL;
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/6.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/5.png?raw=true)
 
 ### 7. Seleccionar Nombres de los instructores que dictan cursos en la ruta de aprendizaje “Sistemas de Información Empresariales”.
 ~~~sql
@@ -308,7 +308,7 @@ INNER JOIN Instructores ON Cursos_X_Ruta.id_instructor = Instructores.id_instruc
 WHERE Cursos_X_Ruta.id_ruta = 1;
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/7.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/6.png?raw=true)
 
 ### 8. Genere un listado de todos los aprendices que terminaron una Carrera mostrando el nombre del profesional, el nombre de la carrera y el énfasis de la carrera (Nombre de la Ruta de aprendizaje)
 ~~~sql
@@ -319,7 +319,7 @@ INNER JOIN Rutas ON Matriculas.id_ruta = Rutas.id_ruta
 WHERE Matriculas.estado_matricula = "Terminado";
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/8.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/7.png?raw=true)
 
 ### 9. Genere un listado de los aprendices matriculados en el curso “Bases de Datos Relacionales”.
 ~~~sql
@@ -328,7 +328,7 @@ INNER JOIN Aprendices ON Aprendiz_X_Curso.id_aprendiz = Aprendices.id_aprendiz
 WHERE Aprendiz_X_Curso.id_curso = 17;
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/9.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/8.png?raw=true)
 
 ### 10. Nombres de Instructores que no tienen curso asignado.
 ~~~sql
@@ -337,6 +337,6 @@ LEFT JOIN Cursos_X_Ruta ON Instructores.id_instructor = Cursos_X_Ruta.id_instruc
 WHERE Cursos_X_Ruta.id_instructor IS NULL;
 ~~~
 ### Resultado
-![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/10.png?raw=true)
+![4](https://github.com/AlejandroP75/CampusAP75/blob/main/MySQL/9.png?raw=true)
 
 ### FIN

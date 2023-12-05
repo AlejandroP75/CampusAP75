@@ -1,0 +1,23 @@
+1.¿Cuál comando de MySQL se utiliza para borrar todos los registros de una tabla?
+
+a)DELETE * FROM nombre_tabla;
+b)REMOVE FROM nombre_tabla;
+c)DELETE FROM nombre_tabla;  <---
+
+2.¿Cuál comando de MySQL se utiliza para cambiar el nombre de una columna?
+
+a)ALTER TABLE nombre_tabla MODIFY COLUMN nombre_nuevo;
+b)RENAME COLUMN nombre_nuevo IN nombre_tabla; 
+c)ALTER TABLE nombre_tabla RENAME COLUMN nombre_nuevo;  <---
+
+3.¿Cuál comando de MySQL se utiliza para limitar el numero de registros que muestra a solo 5 registros?
+
+a)SELECT * FROM nombre_tabla LIMIT 5; <---
+b)SELECT * FROM nombre_tabla TOP 5;
+c)SELECT * FROM nombre_tabla FIRST 5;
+
+4.¿Cuál es la funcion de MAX()?
+
+a)Obtener el valor máximo de una columna. <---
+b)Contar el numero máximo de registros en una columna.
+c)Seleccionar la fila con el valor máximo.
