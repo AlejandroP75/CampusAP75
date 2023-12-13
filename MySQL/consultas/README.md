@@ -168,61 +168,88 @@
 21. Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno. Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados también tienen que aparecer en el listado. El resultado deberá estar ordenado de mayor a menor por el número de asignaturas.
 
      ```sql
-       # Consulta Aqui
+    SELECT gr.nombre, COUNT(a.id) AS Numero_asignaturas FROM grado gr
+    LEFT JOIN asignatura a ON gr.id = a.id_grado
+    GROUP BY gr.nombre
+    ORDER BY Numero_asignaturas DESC;
      ```
 
 22. Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno, de los grados que tengan más de `40` asignaturas asociadas.
 
      ```sql
-       # Consulta Aqui
+    SELECT gr.nombre, COUNT(a.id) AS Numero_asignaturas FROM grado gr
+    LEFT JOIN asignatura a ON gr.id = a.id_grado
+    GROUP BY gr.nombre
+    HAVING Numero_asignaturas > 40
+    ORDER BY Numero_asignaturas DESC;
      ```
 
 23. Devuelve un listado que muestre el nombre de los grados y la suma del número total de créditos que hay para cada tipo de asignatura. El resultado debe tener tres columnas: nombre del grado, tipo de asignatura y la suma de los créditos de todas las asignaturas que hay de ese tipo. Ordene el resultado de mayor a menor por el número total de crédidos.
 
      ```sql
-       # Consulta Aqui
+    SELECT gr.nombre, tipo, sum(creditos) AS total_creditos FROM grado gr
+    INNER JOIN asignatura a ON gr.id = a.id_grado
+    GROUP BY gr.nombre, a.tipo
+    ORDER BY total_creditos DESC;
      ```
 
 24. Devuelve un listado que muestre cuántos alumnos se han matriculado de alguna asignatura en cada uno de los cursos escolares. El resultado deberá mostrar dos columnas, una columna con el año de inicio del curso escolar y otra con el número de alumnos matriculados.
 
      ```sql
-       # Consulta Aqui
+    SELECT ce.anyo_inicio, COUNT(am.id_alumno) FROM alumno_se_matricula_asignatura am
+    INNER JOIN curso_escolar ce ON am.id_curso_escolar = ce.id
+    GROUP BY ce.id;
      ```
 
 25. Devuelve un listado con el número de asignaturas que imparte cada profesor. El listado debe tener en cuenta aquellos profesores que no imparten ninguna asignatura. El resultado mostrará cinco columnas: id, nombre, primer apellido, segundo apellido y número de asignaturas. El resultado estará ordenado de mayor a menor por el número de asignaturas.
 
      ```sql
-       # Consulta Aqui
+    SELECT pr.id_profesor, pe.nombre, pe.apellido1, pe.apellido2, COUNT(a.id) AS asignaturas_que_imparte FROM asignatura a
+    INNER JOIN profesor pr ON a.id_profesor = pr.id_profesor
+    INNER JOIN persona pe ON pr.id_profesor = pe.id
+    GROUP BY pr.id_profesor;
      ```
 
 26. Devuelve todos los datos del alumno más joven.
 
      ```sql
-       # Consulta Aqui
+    SELECT * FROM persona
+    WHERE tipo = 'alumno'
+    ORDER BY fecha_nacimiento DESC
+    LIMIT 1;
      ```
 
 27. Devuelve un listado con los profesores que no están asociados a un departamento.
 
      ```sql
-       # Consulta Aqui
+    SELECT * FROM persona pe 
+    LEFT JOIN profesor pr ON pe.id = pr.id_profesor 
+    WHERE tipo = 'profesor' and pr.id_departamento IS NULL;
      ```
 
 28. Devuelve un listado con los departamentos que no tienen profesores asociados.
 
      ```sql
-       # Consulta Aqui
+    SELECT id, nombre FROM departamento de
+    LEFT JOIN profesor pr ON de.id = pr.id_departamento
+    WHERE id_profesor is NULL;
      ```
 
 29. Devuelve un listado con los profesores que tienen un departamento asociado y que no imparten ninguna asignatura.
 
      ```sql
-       # Consulta Aqui
+    SELECT pr.id_profesor, de.nombre FROM departamento de
+    INNER JOIN profesor pr ON de.id = pr.id_departamento
+    LEFT JOIN asignatura a ON pr.id_profesor = a.id_profesor
+    WHERE a.id IS NULL
+    ORDER BY id_profesor;
      ```
 
 30. Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 
      ```sql
-       # Consulta Aqui
+    SELECT id, nombre FROM asignatura
+    WHERE id_profesor IS NULL;
      ```
 
 31. Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
