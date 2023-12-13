@@ -255,5 +255,9 @@
 31. Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
 
      ```sql
-       # Consulta Aqui
+    SELECT DISTINCT de.id, de.nombre FROM departamento de
+    LEFT JOIN profesor pr ON de.id = pr.id_departamento
+    LEFT JOIN asignatura a ON pr.id_profesor = a.id_profesor
+    LEFT JOIN alumno_se_matricula_asignatura am ON a.id= am.id_asignatura
+    WHERE am.id_curso_escolar IS NULL AND a.id IS NULL;
      ```
