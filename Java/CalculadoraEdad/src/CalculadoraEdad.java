@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class CalculadoraEdad {
     private int diaNacimiento;
     private int mesNacimiento;
@@ -34,7 +36,11 @@ public class CalculadoraEdad {
     }
 
     public int calcularEdad(){
+        Calendar fecha1 = Calendar.getInstance();
+        int diaActual = fecha1.get(Calendar.DATE);
+        int mesActual = fecha1.get(Calendar.MONTH) + 1;
+        int annioActual = fecha1.get(Calendar.YEAR);
         
-        return(0);
+        return 0;
     }
 }
