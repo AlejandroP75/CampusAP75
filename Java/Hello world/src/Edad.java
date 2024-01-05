@@ -15,7 +15,8 @@ public class Edad {
         System.out.println("Año:");
         int año = leer.nextInt();
 
-
         leer.close();
+
+        System.out.println(dia + mes + año);
     }
 }
