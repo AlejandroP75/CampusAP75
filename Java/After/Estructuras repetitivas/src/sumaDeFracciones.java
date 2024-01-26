@@ -4,15 +4,23 @@ public class sumaDeFracciones {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
 
+        int i = 1;
         double fraccion = 0;
-        int cont = 1;
-        double sum = 0.5;
+        double sum = 0;
 
-        System.out.print("Potencia \tFracción \tSuma");
+        System.out.printf("%-10s%-20s%-10s\n", "Potencia", "Fraccion", "Suma");
+        while (true) {
 
-        while (fraccion > 0.000001) {
-            System.out.print(cont + "\t" + (1 / Math.pow(0, cont)) + "\t" + sum);
-            cont++;
+            fraccion = (1 / Math.pow(2, i));
+
+            sum = sum + fraccion;
+
+            System.out.printf("%-10d%-20.10f%-10.10f\n", i, fraccion, sum);
+
+            if(fraccion <= 0.000001){
+                break;
+            }
+            i++;
         }
 
         leer.close();
