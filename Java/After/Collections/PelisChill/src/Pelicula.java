@@ -4,9 +4,9 @@ public class Pelicula {
     private String director;
     private String genero;
     private float precio;
-    private int descuento;
+    private double descuento;
     
-    public Pelicula(int id, String titulo, String director, String genero, float precio, int descuento) {
+    public Pelicula(int id, String titulo, String director, String genero, float precio, double descuento) {
         this.id = id;
         this.titulo = titulo;
         this.director = director;
@@ -55,7 +55,7 @@ public class Pelicula {
         this.precio = precio;
     }
 
-    public int getDescuento() {
+    public double getDescuento() {
         return descuento;
     }
 

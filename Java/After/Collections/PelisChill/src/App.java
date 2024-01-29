@@ -34,7 +34,7 @@ public class App {
                         calcularPrecio();
                         break;
                     case 7:
-                        
+                        alquilarPelicula();
                         break;
                     case 8:
                         System.out.print("\nSALIDA");
@@ -187,9 +187,6 @@ public class App {
                     System.out.print("\nGenero: " + i.getGenero());
                     System.out.printf("\nPrecio: %.0f", i.getPrecio());
                     System.out.print("\nDescuento: " + i.getDescuento() + "%");
-                    System.out.print("\n\nPresione enter para continuar --> ");
-                    leer.nextLine();
-                    leer.nextLine();
                 }
             }
         }else{
@@ -255,7 +252,90 @@ public class App {
         leer.nextLine();
         leer.nextLine();
     }
+    
     public static void calcularPrecio(){
+        System.out.print("\nCALCULAR PRECIO PELICULA\n");
+        int id;
+        System.out.print("\nIngrese el id de la pelicula --> ");
+        id = leer.nextInt();
+        for (Pelicula i : peliculas) {
+            if (id == i.getId()) {
+                System.out.print("\nId: " + i.getId());
+                System.out.print("\nTitulo: " + i.getTitulo());
+                System.out.printf("\nPrecio: %,.0f", i.getPrecio());
+                System.out.printf("\nDescuento: %.0f%%", i.getDescuento());
+                double precioPagar = i.getPrecio() - (i.getPrecio() * (i.getDescuento() / 100));
+                System.out.printf("\nPrecio a pagar: %,.0f", precioPagar);
+            }
+        }
+        System.out.print("\n\nPresione enter para continuar --> ");
+        leer.nextLine();
+        leer.nextLine();
+        
+    }
+
+    public static void alquilarPelicula(){
+        System.out.print("\nALQUILAR PELICULA\n");
+        boolean clien = false;
+        System.out.print("\nIngrese el correo electronico del cliente --> ");
+        leer.nextLine();
+        String correo = leer.nextLine();
+        for (Cliente i : clientes) {
+            if (i.getCorreo().equals(correo)) {
+                clien = true;
+            }
+        }
+        if (clien) {
+            boolean peliE = false;
+            System.out.print("\nCliente encontrado");
+            System.out.print("\n\nIngrese el id de la pelicula --> ");
+            int id = leer.nextInt();
+            for (Pelicula i : peliculas) {
+                if (i.getId() == id) {
+                    peliE = true;
+                }
+            }
+            if (peliE) {
+                System.out.print("\nPelicula encontrada");
+                System.out.print("\n\nRESUMEN\n");
+                System.out.print("\n-----Cliente-----");
+                for (Cliente  i : clientes) {
+                    if (i.getCorreo().equals(correo)) {
+                        System.out.print("\nNombre: " + i.getNombre());
+                        System.out.print("\nCorreo: " + i.getCorreo());
+                        System.out.print("\nTelefono: " + i.getTelefono());
+                        break;
+                    }
+                }
+                System.out.print("\n\n-----Pelicula-----");
+                for (Pelicula  i : peliculas) {
+                    if (id == i.getId()) {
+                        System.out.print("\nTitulo: " + i.getTitulo());
+                        System.out.print("\nDirector: " + i.getDirector());
+                        System.out.print("\nGenero: " + i.getGenero());
+                        System.out.print("\nPrecio: " + i.getPrecio());
+                        System.out.print("\nDescuento: " + i.getDescuento() + "%");
+                        break;
+                    }
+                }
+                System.out.println("\n\nALQUILER COMPLETADO");
+                System.out.print("\nPresione enter para continuar --> ");
+                leer.nextLine();
+                leer.nextLine();
+            }else{
+                System.out.print("\nPelicula no encontrada");
+                System.out.print("\n\nPresione enter para continuar --> ");
+                leer.nextLine();
+                leer.nextLine();
+                return;
+            }
+        }else{
+            System.out.print("\nCliente no encontrado");
+            System.out.print("\n\nPresione enter para continuar --> ");
+            leer.nextLine();
+            leer.nextLine();
+            return;
+        }
         
     }
 }
