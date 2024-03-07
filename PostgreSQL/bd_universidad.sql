@@ -1,7 +1,7 @@
 CREATE DATABASE bd_universidad;
 CREATE TYPE sexo AS ENUM ('H', 'M');
-CREATE TYPE tipo_pers AS ENUM ('Alumno', 'Profesor');
-CREATE TYPE tipo_asig AS ENUM ('Obligatoria', 'Optativa', 'Basica');
+CREATE TYPE tipo_pers AS ENUM ('alumno', 'profesor');
+CREATE TYPE tipo_asig AS ENUM ('obligatoria', 'optativa', 'básica');
 CREATE TABLE departamento (
 	id SERIAL PRIMARY KEY,
 	nombre VARCHAR(50)
@@ -16,7 +16,7 @@ CREATE TABLE curso_escolar (
 	anyo_fin INT
 );
 CREATE TABLE profesor (
-	id SERIAL PRIMARY KEY,
+	id_profesor INT REFERENCES persona(id),
 	id_departamento INT REFERENCES departamento(id)
 );
 CREATE TABLE asignatura (
@@ -47,122 +47,225 @@ CREATE TABLE alumno_se_matricula_asignatura (
 	id_asignatura INT REFERENCES asignatura(id),
 	id_curso_escolar INT REFERENCES curso_escolar(id)
 );
-INSERT INTO departamento (nombre) 
-VALUES 
-    ('Departamento de Matemáticas'),
-    ('Departamento de Física'),
-    ('Departamento de Química'),
-    ('Departamento de Biología'),
-    ('Departamento de Ingeniería Eléctrica'),
-    ('Departamento de Ingeniería Mecánica'),
-    ('Departamento de Ingeniería Civil'),
-    ('Departamento de Ciencias de la Computación'),
-    ('Departamento de Economía'),
-    ('Departamento de Psicología'),
-    ('Departamento de Historia'),
-    ('Departamento de Literatura'),
-    ('Departamento de Idiomas Extranjeros'),
-    ('Departamento de Arquitectura'),
-    ('Departamento de Medicina');
-INSERT INTO grado (nombre) 
-VALUES 
-    ('Licenciatura en Matemáticas'),
-    ('Licenciatura en Física'),
-    ('Licenciatura en Química'),
-    ('Licenciatura en Biología'),
-    ('Ingeniería Eléctrica'),
-    ('Ingeniería Mecánica'),
-    ('Ingeniería Civil'),
-    ('Ciencias de la Computación'),
-    ('Economía'),
-    ('Psicología'),
-    ('Historia'),
-    ('Literatura'),
-    ('Idiomas Extranjeros'),
-    ('Arquitectura'),
-    ('Medicina');
-INSERT INTO curso_escolar (anyo_inicio, anyo_fin)
-VALUES 
-    (2020, 2021),
-    (2021, 2022),
-    (2022, 2023),
-    (2023, 2024),
-    (2024, 2025),
-    (2025, 2026),
-    (2026, 2027),
-    (2027, 2028),
-    (2028, 2029),
-    (2029, 2030),
-    (2030, 2031),
-    (2031, 2032),
-    (2032, 2033),
-    (2033, 2034),
-    (2034, 2035);
-INSERT INTO profesor (id_departamento)
-VALUES 
-    (1),
-    (1),
-    (2),
-    (2),
-    (3),
-    (4),
-    (5),
-    (5),
-    (6),
-    (7),
-    (8),
-    (9),
-    (10),
-    (11),
-    (12);
-INSERT INTO asignatura (nombre, creditos, tipo, curso, cuatrimestre, id_profesor, id_grado)
-VALUES 
-    ('Álgebra Lineal', 6.0, 'Obligatoria', 1, 1, 1, 1),
-    ('Mecánica Clásica', 6.0, 'Obligatoria', 1, 1, 2, 2),
-    ('Química Orgánica', 6.0, 'Obligatoria', 1, 2, 3, 3),
-    ('Biología Celular', 6.0, 'Obligatoria', 1, 2, 4, 4),
-    ('Electromagnetismo', 6.0, 'Optativa', 2, 1, 5, 5),
-    ('Diseño de Máquinas', 6.0, 'Optativa', 2, 1, 6, 6),
-    ('Diseño Estructural', 6.0, 'Optativa', 2, 2, 7, 7),
-    ('Programación Avanzada', 6.0, 'Optativa', 2, 2, 8, 8),
-    ('Microeconomía', 6.0, 'Obligatoria', 3, 1, 9, 9),
-    ('Psicología del Desarrollo', 6.0, 'Obligatoria', 3, 1, 10, 10),
-    ('Historia Contemporánea', 6.0, 'Obligatoria', 3, 2, 11, 11),
-    ('Literatura Universal', 6.0, 'Obligatoria', 3, 2, 12, 12),
-    ('Inglés Avanzado', 6.0, 'Optativa', 4, 1, 13, 13),
-    ('Diseño Arquitectónico', 6.0, 'Optativa', 4, 1, 14, 14),
-    ('Anatomía Humana', 6.0, 'Basica', 4, 2, 15, 15);
-INSERT INTO persona (nif, nombre, apellido1, apellido2, ciudad, direccion, telefono, fecha_nacimiento, sexo, tipo)
-VALUES 
-    ('12345678A', 'Juan', 'Pérez', 'García', 'Madrid', 'Calle Mayor 123', '123456789', '1990-05-15', 'H', 'Alumno'),
-    ('23456789B', 'María', 'López', 'Fernández', 'Barcelona', 'Avenida Diagonal 456', '234567890', '1988-08-25', 'M', 'Alumno'),
-    ('34567890C', 'Pedro', 'Gómez', 'Martínez', 'Valencia', 'Calle Valencia 789', '345678901', '1995-10-10', 'H', 'Alumno'),
-    ('45678901D', 'Ana', 'Ruiz', 'Sánchez', 'Sevilla', 'Avenida de la Constitución 321', '456789012', '1992-03-30', 'M', 'Alumno'),
-    ('56789012E', 'David', 'Martín', 'López', 'Málaga', 'Calle Larios 234', '567890123', '1993-07-20', 'H', 'Alumno'),
-    ('67890123F', 'Laura', 'Sanz', 'Díaz', 'Bilbao', 'Calle Gran Vía 567', '678901234', '1991-01-05', 'M', 'Alumno'),
-    ('78901234G', 'Carlos', 'Jiménez', 'Muñoz', 'Alicante', 'Calle Postiguet 890', '789012345', '1994-12-12', 'H', 'Alumno'),
-    ('89012345H', 'Sara', 'García', 'Rodríguez', 'Zaragoza', 'Paseo de la Independencia 432', '890123456', '1996-09-28', 'M', 'Alumno'),
-    ('90123456I', 'Diego', 'Pérez', 'Fernández', 'Murcia', 'Calle Mayor 987', '901234567', '1997-06-18', 'H', 'Alumno'),
-    ('01234567J', 'Elena', 'Martínez', 'Gómez', 'Granada', 'Calle Reyes Católicos 876', '012345678', '1998-04-03', 'M', 'Alumno'),
-    ('12345678K', 'José', 'González', 'Gutiérrez', 'Toledo', 'Calle Real 765', '123456789', '1999-02-14', 'H', 'Profesor'),
-    ('23456789L', 'Carmen', 'Díaz', 'Hernández', 'Valladolid', 'Plaza Mayor 654', '234567890', '1985-11-20', 'M', 'Profesor'),
-    ('34567890M', 'Javier', 'Sánchez', 'Romero', 'Cádiz', 'Calle Ancha 543', '345678901', '1980-07-08', 'H', 'Profesor'),
-    ('45678901N', 'Isabel', 'López', 'Martínez', 'Salamanca', 'Calle Mayor 432', '456789012', '1983-09-16', 'M', 'Profesor'),
-    ('56789012O', 'Manuel', 'Fernández', 'García', 'León', 'Paseo de la Condesa 321', '567890123', '1978-12-05', 'H', 'Profesor');
-INSERT INTO alumno_se_matricula_asignatura (id_alumno, id_asignatura, id_curso_escolar)
-VALUES 
-    (1, 1, 1),
-    (2, 2, 1),
-    (3, 3, 2),
-    (4, 4, 2),
-    (5, 5, 3),
-    (6, 6, 3),
-    (7, 7, 4),
-    (8, 8, 4),
-    (9, 9, 5),
-    (10, 10, 5),
-    (1, 11, 6),
-    (2, 12, 6),
-    (3, 13, 7),
-    (4, 14, 7),
-    (5, 15, 8);
+ /* Departamento */
+INSERT INTO departamento VALUES (1, 'Informática');
+INSERT INTO departamento VALUES (2, 'Matemáticas');
+INSERT INTO departamento VALUES (3, 'Economía y Empresa');
+INSERT INTO departamento VALUES (4, 'Educación');
+INSERT INTO departamento VALUES (5, 'Agronomía');
+INSERT INTO departamento VALUES (6, 'Química y Física');
+INSERT INTO departamento VALUES (7, 'Filología');
+INSERT INTO departamento VALUES (8, 'Derecho');
+INSERT INTO departamento VALUES (9, 'Biología y Geología');
+ 
+ /* Persona */
+INSERT INTO persona VALUES (1, '26902806M', 'Salvador', 'Sánchez', 'Pérez', 'Almería', 'C/ Real del barrio alto', '950254837', '1991/03/28', 'H', 'alumno');
+INSERT INTO persona VALUES (2, '89542419S', 'Juan', 'Saez', 'Vega', 'Almería', 'C/ Mercurio', '618253876', '1992/08/08', 'H', 'alumno');
+INSERT INTO persona VALUES (3, '11105554G', 'Zoe', 'Ramirez', 'Gea', 'Almería', 'C/ Marte', '618223876', '1979/08/19', 'M', 'profesor');
+INSERT INTO persona VALUES (4, '17105885A', 'Pedro', 'Heller', 'Pagac', 'Almería', 'C/ Estrella fugaz', NULL, '2000/10/05', 'H', 'alumno');
+INSERT INTO persona VALUES (5, '38223286T', 'David', 'Schmidt', 'Fisher', 'Almería', 'C/ Venus', '678516294', '1978/01/19', 'H', 'profesor');
+INSERT INTO persona VALUES (6, '04233869Y', 'José', 'Koss', 'Bayer', 'Almería', 'C/ Júpiter', '628349590', '1998/01/28', 'H', 'alumno');
+INSERT INTO persona VALUES (7, '97258166K', 'Ismael', 'Strosin', 'Turcotte', 'Almería', 'C/ Neptuno', NULL, '1999/05/24', 'H', 'alumno');
+INSERT INTO persona VALUES (8, '79503962T', 'Cristina', 'Lemke', 'Rutherford', 'Almería', 'C/ Saturno', '669162534', '1977/08/21', 'M', 'profesor');
+INSERT INTO persona VALUES (9, '82842571K', 'Ramón', 'Herzog', 'Tremblay', 'Almería', 'C/ Urano', '626351429', '1996/11/21', 'H', 'alumno');
+INSERT INTO persona VALUES (10, '61142000L', 'Esther', 'Spencer', 'Lakin', 'Almería', 'C/ Plutón', NULL, '1977/05/19', 'M', 'profesor');
+INSERT INTO persona VALUES (11, '46900725E', 'Daniel', 'Herman', 'Pacocha', 'Almería', 'C/ Andarax', '679837625', '1997/04/26', 'H', 'alumno');
+INSERT INTO persona VALUES (12, '85366986W', 'Carmen', 'Streich', 'Hirthe', 'Almería', 'C/ Almanzora', NULL, '1971-04-29', 'M', 'profesor');
+INSERT INTO persona VALUES (13, '73571384L', 'Alfredo', 'Stiedemann', 'Morissette', 'Almería', 'C/ Guadalquivir', '950896725', '1980/02/01', 'H', 'profesor');
+INSERT INTO persona VALUES (14, '82937751G', 'Manolo', 'Hamill', 'Kozey', 'Almería', 'C/ Duero', '950263514', '1977/01/02', 'H', 'profesor');
+INSERT INTO persona VALUES (15, '80502866Z', 'Alejandro', 'Kohler', 'Schoen', 'Almería', 'C/ Tajo', '668726354', '1980/03/14', 'H', 'profesor');
+INSERT INTO persona VALUES (16, '10485008K', 'Antonio', 'Fahey', 'Considine', 'Almería', 'C/ Sierra de los Filabres', NULL, '1982/03/18', 'H', 'profesor');
+INSERT INTO persona VALUES (17, '85869555K', 'Guillermo', 'Ruecker', 'Upton', 'Almería', 'C/ Sierra de Gádor', NULL, '1973/05/05', 'H', 'profesor');
+INSERT INTO persona VALUES (18, '04326833G', 'Micaela', 'Monahan', 'Murray', 'Almería', 'C/ Veleta', '662765413', '1976/02/25', 'H', 'profesor');
+INSERT INTO persona VALUES (19, '11578526G', 'Inma', 'Lakin', 'Yundt', 'Almería', 'C/ Picos de Europa', '678652431', '1998/09/01', 'M', 'alumno');
+INSERT INTO persona VALUES (20, '79221403L', 'Francesca', 'Schowalter', 'Muller', 'Almería', 'C/ Quinto pino', NULL, '1980/10/31', 'H', 'profesor');
+INSERT INTO persona VALUES (21, '79089577Y', 'Juan', 'Gutiérrez', 'López', 'Almería', 'C/ Los pinos', '678652431', '1998/01/01', 'H', 'alumno');
+INSERT INTO persona VALUES (22, '41491230N', 'Antonio', 'Domínguez', 'Guerrero', 'Almería', 'C/ Cabo de Gata', '626652498', '1999/02/11', 'H', 'alumno');
+INSERT INTO persona VALUES (23, '64753215G', 'Irene', 'Hernández', 'Martínez', 'Almería', 'C/ Zapillo', '628452384', '1996/03/12', 'M', 'alumno');
+INSERT INTO persona VALUES (24, '85135690V', 'Sonia', 'Gea', 'Ruiz', 'Almería', 'C/ Mercurio', '678812017', '1995/04/13', 'M', 'alumno');
+ 
+/* Profesor */
+INSERT INTO profesor VALUES (3, 1);
+INSERT INTO profesor VALUES (5, 2);
+INSERT INTO profesor VALUES (8, 3);
+INSERT INTO profesor VALUES (10, 4);
+INSERT INTO profesor VALUES (12, 4);
+INSERT INTO profesor VALUES (13, 6);
+INSERT INTO profesor VALUES (14, 1);
+INSERT INTO profesor VALUES (15, 2);
+INSERT INTO profesor VALUES (16, 3);
+INSERT INTO profesor VALUES (17, 4);
+INSERT INTO profesor VALUES (18, 5);
+INSERT INTO profesor VALUES (20, 6);
+ 
+ /* Grado */
+INSERT INTO grado VALUES (1, 'Grado en Ingeniería Agrícola (Plan 2015)');
+INSERT INTO grado VALUES (2, 'Grado en Ingeniería Eléctrica (Plan 2014)');
+INSERT INTO grado VALUES (3, 'Grado en Ingeniería Electrónica Industrial (Plan 2010)');
+INSERT INTO grado VALUES (4, 'Grado en Ingeniería Informática (Plan 2015)');
+INSERT INTO grado VALUES (5, 'Grado en Ingeniería Mecánica (Plan 2010)');
+INSERT INTO grado VALUES (6, 'Grado en Ingeniería Química Industrial (Plan 2010)');
+INSERT INTO grado VALUES (7, 'Grado en Biotecnología (Plan 2015)');
+INSERT INTO grado VALUES (8, 'Grado en Ciencias Ambientales (Plan 2009)');
+INSERT INTO grado VALUES (9, 'Grado en Matemáticas (Plan 2010)');
+INSERT INTO grado VALUES (10, 'Grado en Química (Plan 2009)');
+ 
+/* Asignatura */
+INSERT INTO asignatura VALUES (1, 'Álgegra lineal y matemática discreta', 6, 'básica', 1, 1, 3, 4);
+INSERT INTO asignatura VALUES (2, 'Cálculo', 6, 'básica', 1, 1, 14, 4);
+INSERT INTO asignatura VALUES (3, 'Física para informática', 6, 'básica', 1, 1, 3, 4);
+INSERT INTO asignatura VALUES (4, 'Introducción a la programación', 6, 'básica', 1, 1, 14, 4);
+INSERT INTO asignatura VALUES (5, 'Organización y gestión de empresas', 6, 'básica', 1, 1, 3, 4);
+INSERT INTO asignatura VALUES (6, 'Estadística', 6, 'básica', 1, 2, 14, 4);
+INSERT INTO asignatura VALUES (7, 'Estructura y tecnología de computadores', 6, 'básica', 1, 2, 3, 4);
+INSERT INTO asignatura VALUES (8, 'Fundamentos de electrónica', 6, 'básica', 1, 2, 14, 4);
+INSERT INTO asignatura VALUES (9, 'Lógica y algorítmica', 6, 'básica', 1, 2, 3, 4);
+INSERT INTO asignatura VALUES (10, 'Metodología de la programación', 6, 'básica', 1, 2, 14, 4);
+INSERT INTO asignatura VALUES (11, 'Arquitectura de Computadores', 6, 'básica', 2, 1, 3, 4);
+INSERT INTO asignatura VALUES (12, 'Estructura de Datos y Algoritmos I', 6, 'obligatoria', 2, 1, 3, 4);
+INSERT INTO asignatura VALUES (13, 'Ingeniería del Software', 6, 'obligatoria', 2, 1, 14, 4);
+INSERT INTO asignatura VALUES (14, 'Sistemas Inteligentes', 6, 'obligatoria', 2, 1, 3, 4);
+INSERT INTO asignatura VALUES (15, 'Sistemas Operativos', 6, 'obligatoria', 2, 1, 14, 4);
+INSERT INTO asignatura VALUES (16, 'Bases de Datos', 6, 'básica', 2, 2, 14, 4);
+INSERT INTO asignatura VALUES (17, 'Estructura de Datos y Algoritmos II', 6, 'obligatoria', 2, 2, 14, 4);
+INSERT INTO asignatura VALUES (18, 'Fundamentos de Redes de Computadores', 6 ,'obligatoria', 2, 2, 3, 4);
+INSERT INTO asignatura VALUES (19, 'Planificación y Gestión de Proyectos Informáticos', 6, 'obligatoria', 2, 2, 3, 4);
+INSERT INTO asignatura VALUES (20, 'Programación de Servicios Software', 6, 'obligatoria', 2, 2, 14, 4);
+INSERT INTO asignatura VALUES (21, 'Desarrollo de interfaces de usuario', 6, 'obligatoria', 3, 1, 14, 4);
+INSERT INTO asignatura VALUES (22, 'Ingeniería de Requisitos', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (23, 'Integración de las Tecnologías de la Información en las Organizaciones', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (24, 'Modelado y Diseño del Software 1', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (25, 'Multiprocesadores', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (26, 'Seguridad y cumplimiento normativo', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (27, 'Sistema de Información para las Organizaciones', 6, 'optativa', 3, 1, NULL, 4); 
+INSERT INTO asignatura VALUES (28, 'Tecnologías web', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (29, 'Teoría de códigos y criptografía', 6, 'optativa', 3, 1, NULL, 4);
+INSERT INTO asignatura VALUES (30, 'Administración de bases de datos', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (31, 'Herramientas y Métodos de Ingeniería del Software', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (32, 'Informática industrial y robótica', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (33, 'Ingeniería de Sistemas de Información', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (34, 'Modelado y Diseño del Software 2', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (35, 'Negocio Electrónico', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (36, 'Periféricos e interfaces', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (37, 'Sistemas de tiempo real', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (38, 'Tecnologías de acceso a red', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (39, 'Tratamiento digital de imágenes', 6, 'optativa', 3, 2, NULL, 4);
+INSERT INTO asignatura VALUES (40, 'Administración de redes y sistemas operativos', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (41, 'Almacenes de Datos', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (42, 'Fiabilidad y Gestión de Riesgos', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (43, 'Líneas de Productos Software', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (44, 'Procesos de Ingeniería del Software 1', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (45, 'Tecnologías multimedia', 6, 'optativa', 4, 1, NULL, 4);
+INSERT INTO asignatura VALUES (46, 'Análisis y planificación de las TI', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (47, 'Desarrollo Rápido de Aplicaciones', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (48, 'Gestión de la Calidad y de la Innovación Tecnológica', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (49, 'Inteligencia del Negocio', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (50, 'Procesos de Ingeniería del Software 2', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (51, 'Seguridad Informática', 6, 'optativa', 4, 2, NULL, 4);
+INSERT INTO asignatura VALUES (52, 'Biologia celular', 6, 'básica', 1, 1, NULL, 7);
+INSERT INTO asignatura VALUES (53, 'Física', 6, 'básica', 1, 1, NULL, 7);
+INSERT INTO asignatura VALUES (54, 'Matemáticas I', 6, 'básica', 1, 1, NULL, 7);
+INSERT INTO asignatura VALUES (55, 'Química general', 6, 'básica', 1, 1, NULL, 7);
+INSERT INTO asignatura VALUES (56, 'Química orgánica', 6, 'básica', 1, 1, NULL, 7);
+INSERT INTO asignatura VALUES (57, 'Biología vegetal y animal', 6, 'básica', 1, 2, NULL, 7);
+INSERT INTO asignatura VALUES (58, 'Bioquímica', 6, 'básica', 1, 2, NULL, 7);
+INSERT INTO asignatura VALUES (59, 'Genética', 6, 'básica', 1, 2, NULL, 7);
+INSERT INTO asignatura VALUES (60, 'Matemáticas II', 6, 'básica', 1, 2, NULL, 7);
+INSERT INTO asignatura VALUES (61, 'Microbiología', 6, 'básica', 1, 2, NULL, 7);
+INSERT INTO asignatura VALUES (62, 'Botánica agrícola', 6, 'obligatoria', 2, 1, NULL, 7);
+INSERT INTO asignatura VALUES (63, 'Fisiología vegetal', 6, 'obligatoria', 2, 1, NULL, 7);
+INSERT INTO asignatura VALUES (64, 'Genética molecular', 6, 'obligatoria', 2, 1, NULL, 7);
+INSERT INTO asignatura VALUES (65, 'Ingeniería bioquímica', 6, 'obligatoria', 2, 1, NULL, 7);
+INSERT INTO asignatura VALUES (66, 'Termodinámica y cinética química aplicada', 6, 'obligatoria', 2, 1, NULL, 7);
+INSERT INTO asignatura VALUES (67, 'Biorreactores', 6, 'obligatoria', 2, 2, NULL, 7);
+INSERT INTO asignatura VALUES (68, 'Biotecnología microbiana', 6, 'obligatoria', 2, 2, NULL, 7);
+INSERT INTO asignatura VALUES (69, 'Ingeniería genética', 6, 'obligatoria', 2, 2, NULL, 7);
+INSERT INTO asignatura VALUES (70, 'Inmunología', 6, 'obligatoria', 2, 2, NULL, 7);
+INSERT INTO asignatura VALUES (71, 'Virología', 6, 'obligatoria', 2, 2, NULL, 7);
+INSERT INTO asignatura VALUES (72, 'Bases moleculares del desarrollo vegetal', 4.5, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (73, 'Fisiología animal', 4.5, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (74, 'Metabolismo y biosíntesis de biomoléculas', 6, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (75, 'Operaciones de separación', 6, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (76, 'Patología molecular de plantas', 4.5, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (77, 'Técnicas instrumentales básicas', 4.5, 'obligatoria', 3, 1, NULL, 7);
+INSERT INTO asignatura VALUES (78, 'Bioinformática', 4.5, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO asignatura VALUES (79, 'Biotecnología de los productos hortofrutículas', 4.5, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO asignatura VALUES (80, 'Biotecnología vegetal', 6, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO asignatura VALUES (81, 'Genómica y proteómica', 4.5, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO asignatura VALUES (82, 'Procesos biotecnológicos', 6, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO asignatura VALUES (83, 'Técnicas instrumentales avanzadas', 4.5, 'obligatoria', 3, 2, NULL, 7);
+
+/* Curso escolar */
+INSERT INTO curso_escolar VALUES (1, 2014, 2015);
+INSERT INTO curso_escolar VALUES (2, 2015, 2016);
+INSERT INTO curso_escolar VALUES (3, 2016, 2017);
+INSERT INTO curso_escolar VALUES (4, 2017, 2018);
+INSERT INTO curso_escolar VALUES (5, 2018, 2019);
+
+/* Alumno se matricula en asignatura */
+INSERT INTO alumno_se_matricula_asignatura VALUES (1, 1, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (1, 2, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (1, 3, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (2, 1, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (2, 2, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (2, 3, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (4, 1, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (4, 2, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (4, 3, 1);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 1, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 2, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 3, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 4, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 5, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 6, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 7, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 8, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 9, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (24, 10, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 1, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 2, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 3, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 4, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 5, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 6, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 7, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 8, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 9, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (23, 10, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 1, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 2, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 3, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 4, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 5, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 6, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 7, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 8, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 9, 5);
+INSERT INTO alumno_se_matricula_asignatura VALUES (19, 10, 5);
+
+/*CONSULTAS SOBRE UNA TABLA*/
+
+SELECT apellido1, apellido2, nombre, tipo FROM persona
+WHERE tipo = 'alumno'
+ORDER BY apellido1, apellido2, nombre;
+
+SELECT apellido1, apellido2, nombre FROM persona
+WHERE tipo = 'alumno' AND telefono IS NULL;
+
+SELECT * FROM persona
+WHERE EXTRACT(YEAR FROM fecha_nacimiento) = 1999 AND tipo = 'alumno';
+
+SELECT * FROM persona
+WHERE tipo = 'profesor' AND telefono IS NULL AND nif LIKE '%K';
+
+SELECT * FROM asignatura
+WHERE cuatrimestre = 1 AND curso = 3 AND id_grado = 7;
+
+/*CONSULTAS MULTITABLA (INTERNA)*/
+
+SELECT DISTINCT persona.apellido1, persona.apellido2, persona.nombre, persona.sexo, persona.tipo, grado.nombre FROM alumno_se_matricula_asignatura
+JOIN persona ON persona.id = alumno_se_matricula_asignatura.id_alumno
+JOIN asignatura ON asignatura.id = alumno_se_matricula_asignatura.id_asignatura
+JOIN grado ON grado.id = asignatura.id_grado
+WHERE persona.sexo = 'M' AND grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+
