@@ -15,6 +15,19 @@ CREATE TABLE curso_escolar (
 	anyo_inicio INT,
 	anyo_fin INT
 );
+CREATE TABLE persona (
+	id SERIAL PRIMARY KEY,
+	nif VARCHAR(9),
+	nombre VARCHAR(25),
+	apellido1 VARCHAR(50),
+	apellido2 VARCHAR(50),
+	ciudad VARCHAR(25),
+	direccion VARCHAR(50),
+	telefono VARCHAR(9),
+	fecha_nacimiento DATE,
+	sexo sexo,
+	tipo tipo_pers
+);
 CREATE TABLE profesor (
 	id_profesor INT REFERENCES persona(id),
 	id_departamento INT REFERENCES departamento(id)
@@ -28,19 +41,6 @@ CREATE TABLE asignatura (
 	cuatrimestre SMALLINT,
 	id_profesor INT REFERENCES profesor(id),
 	id_grado INT REFERENCES grado(id)
-);
-CREATE TABLE persona (
-	id SERIAL PRIMARY KEY,
-	nif VARCHAR(9),
-	nombre VARCHAR(25),
-	apellido1 VARCHAR(50),
-	apellido2 VARCHAR(50),
-	ciudad VARCHAR(25),
-	direccion VARCHAR(50),
-	telefono VARCHAR(9),
-	fecha_nacimiento DATE,
-	sexo sexo,
-	tipo tipo_pers
 );
 CREATE TABLE alumno_se_matricula_asignatura (
 	id_alumno INT REFERENCES persona(id),
@@ -273,3 +273,24 @@ SELECT * FROM asignatura
 JOIN grado ON grado.id = asignatura.id_grado
 WHERE grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
 
+SELECT pe.apellido1, pe.apellido2, pe.nombre, de.nombre FROM profesor pr
+JOIN persona pe ON pe.id = pr.id_profesor
+JOIN departamento de ON de.id = pr.id_departamento
+ORDER BY pe.apellido1, pe.apellido2, pe.nombre;
+
+SELECT asi.nombre, ce.anyo_inicio, ce.anyo_fin, pe.nif FROM alumno_se_matricula_asignatura asma
+JOIN asignatura asi ON asi.id = asma.id_asignatura
+JOIN curso_escolar ce ON ce.id = asma.id_curso_escolar
+JOIN persona pe ON pe.id = asma.id_alumno
+WHERE pe.tipo = 'alumno' AND pe.nif = '26902806M';
+
+SELECT DISTINCT de.nombre, gra.nombre FROM profesor pr
+JOIN departamento de ON de.id = pr.id_departamento
+JOIN asignatura asi ON asi.id_profesor = pr.id_profesor
+JOIN grado gra ON gra.id = asi.id_grado
+WHERE gra.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+
+SELECT DISTINCT pe.apellido1, pe.apellido2, pe.nombre FROM curso_escolar ce
+JOIN alumno_se_matricula_asignatura asma ON asma.id_curso_escolar = ce.id
+JOIN persona pe ON pe.id = asma.id_alumno
+WHERE pe.tipo = 'alumno' AND ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
