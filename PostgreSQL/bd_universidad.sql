@@ -269,3 +269,7 @@ JOIN asignatura ON asignatura.id = alumno_se_matricula_asignatura.id_asignatura
 JOIN grado ON grado.id = asignatura.id_grado
 WHERE persona.sexo = 'M' AND grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
 
+SELECT * FROM asignatura
+JOIN grado ON grado.id = asignatura.id_grado
+WHERE grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+
