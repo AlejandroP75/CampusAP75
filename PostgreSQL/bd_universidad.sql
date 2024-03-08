@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS bd_univesidad;
 CREATE DATABASE bd_universidad;
 CREATE TYPE sexo AS ENUM ('H', 'M');
 CREATE TYPE tipo_pers AS ENUM ('alumno', 'profesor');
@@ -373,3 +374,25 @@ ORDER BY numero_asignaturas DESC;
 
 /*SUBCONSULTAS*/
 
+SELECT * FROM persona
+WHERE EXTRACT(YEAR FROM fecha_nacimiento) = (SELECT MAX(EXTRACT(YEAR FROM fecha_nacimiento)) FROM persona);
+
+SELECT * FROM profesor pr
+WHERE pr.id_departamento NOT IN (SELECT id FROM departamento);
+
+SELECT nombre FROM departamento 
+WHERE id NOT IN (SELECT id_departamento FROM profesor);
+
+SELECT DISTINCT pe.nombre, pe.apellido1, pe.apellido2, asi.id AS id_asignatura FROM profesor pr
+JOIN departamento de ON de.id = pr.id_departamento
+JOIN persona pe ON pe.id = pr.id_profesor
+LEFT JOIN asignatura asi ON pr.id_profesor = asi.id_profesor
+WHERE asi.id IS NULL;
+
+SELECT nombre FROM asignatura asi
+WHERE id_profesor IS NULL;
+
+SELECT DISTINCT de.nombre FROM departamento de
+JOIN profesor pr ON pr.id_departamento = de.id
+JOIN asignatura asi ON asi.id_profesor = pr.id_profesor
+WHERE asi.id NOT IN (SELECT id_asignatura FROM alumno_se_matricula_asignatura);
