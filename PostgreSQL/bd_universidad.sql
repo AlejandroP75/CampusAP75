@@ -294,3 +294,82 @@ SELECT DISTINCT pe.apellido1, pe.apellido2, pe.nombre FROM curso_escolar ce
 JOIN alumno_se_matricula_asignatura asma ON asma.id_curso_escolar = ce.id
 JOIN persona pe ON pe.id = asma.id_alumno
 WHERE pe.tipo = 'alumno' AND ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
+
+/*CONSULTAS MULTITABLA (EXTERNA)*/
+
+SELECT de.nombre, pe.apellido1, pe.apellido2, pe.nombre FROM profesor pr
+JOIN persona pe ON pe.id = pr.id_profesor
+LEFT JOIN departamento de ON de.id = pr.id_departamento
+WHERE pe.tipo = 'profesor'
+ORDER BY de.nombre, pe.apellido1, pe.apellido2, pe.nombre;
+
+SELECT * FROM profesor pr
+INNER JOIN persona pe ON pe.id = pr.id_profesor
+WHERE id_departamento IS NULL;
+
+SELECT de.id, de.nombre FROM departamento de
+LEFT JOIN profesor pr ON pr.id_departamento = de.id
+WHERE id_departamento IS NULL;
+
+SELECT pe.apellido1, pe.apellido2, pe.nombre, asi.id as asignatura FROM profesor pr
+LEFT JOIN asignatura asi ON asi.id_profesor = pr.id_profesor
+JOIN persona pe ON pe.id = pr.id_profesor
+WHERE asi.id IS NULL;
+
+SELECT asi.nombre, pr.id_profesor FROM asignatura asi
+LEFT JOIN profesor pr ON pr.id_profesor = asi.id_profesor
+WHERE pr.id_profesor IS NULL;
+
+SELECT de.nombre, asi.nombre FROM departamento de
+JOIN profesor pr ON pr.id_departamento = de.id
+JOIN asignatura asi ON asi.id_profesor = pr.id_profesor
+LEFT JOIN alumno_se_matricula_asignatura asma ON asma.id_asignatura = asi.id
+WHERE asma.id_curso_escolar IS NULL; 
+
+/*CONSULTAS RESUMEN*/
+
+SELECT COUNT(id) AS total_alumnas FROM persona
+WHERE sexo = 'M'
+GROUP BY sexo;
+
+SELECT COUNT(id) FROM persona
+WHERE EXTRACT(YEAR FROM fecha_nacimiento) = 2005;
+
+SELECT de.nombre, COUNT(id_profesor) AS numero_profesores FROM profesor pr
+JOIN departamento de ON de.id = pr.id_departamento
+GROUP BY de.nombre
+ORDER BY numero_profesores DESC;
+
+SELECT de.nombre AS departamento, COUNT(id_profesor) AS numero_profesores FROM profesor pr
+RIGHT JOIN departamento de ON de.id = pr.id_departamento
+GROUP BY de.nombre
+ORDER BY numero_profesores DESC;
+
+SELECT gr.nombre, COUNT(asi.id) AS numero_asignaturas FROM grado gr
+LEFT JOIN asignatura asi ON asi.id_grado = gr.id
+GROUP BY gr.nombre
+ORDER BY numero_asignaturas DESC;
+
+SELECT gr.nombre, COUNT(asi.id) AS numero_asignaturas FROM grado gr
+LEFT JOIN asignatura asi ON asi.id_grado = gr.id
+GROUP BY gr.nombre
+HAVING COUNT(asi.id) > 40
+ORDER BY numero_asignaturas DESC;
+
+SELECT gr.nombre, asi.tipo, SUM(creditos) AS total_creditos FROM grado gr
+JOIN asignatura asi ON asi.id_grado = gr.id
+GROUP BY gr.nombre, asi.tipo
+ORDER BY total_creditos DESC;
+
+SELECT ce.anyo_inicio, COUNT(id_alumno) AS alumnos_matriculados FROM alumno_se_matricula_asignatura asma
+JOIN curso_escolar ce ON ce.id = asma.id_curso_escolar
+GROUP BY ce.anyo_inicio;
+
+SELECT pr.id_profesor, pe.nombre, pe.apellido1, pe.apellido2, COUNT(asi.id) AS numero_asignaturas FROM profesor pr
+LEFT JOIN asignatura asi ON asi.id_profesor = pr.id_profesor
+JOIN persona pe ON pe.id = pr.id_profesor
+GROUP BY pr.id_profesor, pe.nombre, pe.apellido1, pe.apellido2
+ORDER BY numero_asignaturas DESC;
+
+/*SUBCONSULTAS*/
+
