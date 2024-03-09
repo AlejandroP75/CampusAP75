@@ -117,7 +117,7 @@ ORDER BY apellido1, apellido2, nombre;
 /*6*/
 /*Lo que hacen los natural es enlazar directamento dos tablas por el nombre de sus 
 columnas, considero que se pueden usar en algunas pero en otras darian resultados
-innesperados asi que considero que es mejor no usarlos.
+innesperados asi que considero que es mejor no usarlos.*/
 
 /*4) Consultas resumen*/
 /*1*/
@@ -144,53 +144,70 @@ GROUP BY ciudad;
 
 /*8*/
 SELECT id_cliente, nombre, apellido1, apellido2, fecha, total
-FROM (
-    SELECT 
-        id_cliente,
-        nombre,
-        apellido1,
-        apellido2,
-        fecha,
-        total,
-        ROW_NUMBER() OVER (PARTITION BY id_cliente, fecha ORDER BY total DESC) AS rn
-    FROM pedido
-    JOIN cliente ON pedido.id_cliente = cliente.id
-) AS ranked
+FROM (SELECT id_cliente, nombre, apellido1, apellido2, fecha, total, ROW_NUMBER() OVER (PARTITION BY id_cliente, fecha ORDER BY total DESC) AS rn FROM pedido
+    	JOIN cliente ON pedido.id_cliente = cliente.id) AS ranked
 WHERE rn = 1;
 
 /*9*/
-
+SELECT id_cliente, nombre, apellido1, apellido2, fecha, total
+FROM (SELECT id_cliente, nombre, apellido1, apellido2, fecha, total, ROW_NUMBER() OVER (PARTITION BY id_cliente, fecha ORDER BY total DESC) AS rn FROM pedido
+    	JOIN cliente ON pedido.id_cliente = cliente.id) AS ranked
+WHERE rn = 1 AND total > 2000;
 
 /*10*/
-
+SELECT id_comercial, nombre, apellido1, apellido2, fecha, total
+FROM (SELECT id_comercial, nombre, apellido1, apellido2, fecha, total, ROW_NUMBER() OVER (PARTITION BY id_comercial, fecha ORDER BY total DESC) AS rn FROM pedido
+    	JOIN comercial co ON pedido.id_cliente = co.id) AS ranked
+WHERE rn = 1 AND fecha = '2016-08-17';
 
 /*11*/
-
+SELECT cl.id, cl.nombre, cl.apellido1, cl.apellido2, COUNT(pe.id) AS numero_pedidos FROM cliente cl
+LEFT JOIN pedido pe ON pe.id_cliente = cl.id
+GROUP BY cl.id, cl.nombre, cl.apellido1, cl.apellido2;
 
 /*12*/
-
+SELECT DISTINCT cl.id, cl.nombre, cl.apellido1, cl.apellido2, COUNT(pe.id) AS numero_pedidos FROM cliente cl
+JOIN pedido pe ON pe.id_cliente = cl.id
+WHERE EXTRACT(YEAR FROM fecha) = 2017
+GROUP BY cl.id, cl.nombre, cl.apellido1, cl.apellido2;
 
 /*13*/
-
+SELECT DISTINCT cl.id, cl.nombre, cl.apellido1, cl.apellido2, COALESCE(MAX(pe.total), 0) AS maximo_pedido FROM cliente cl
+LEFT JOIN pedido pe ON pe.id_cliente = cl.id
+GROUP BY cl.id, cl.nombre, cl.apellido1, cl.apellido2;
 
 /*14*/
-
+SELECT EXTRACT(YEAR FROM fecha) AS anio, MAX(total) AS maximo_total_año FROM pedido
+GROUP BY anio
+ORDER BY anio;
 
 /*15*/
-
+SELECT EXTRACT(YEAR FROM fecha) AS anio, COUNT(id) AS numero_pedidos FROM pedido
+GROUP BY anio
+ORDER BY anio;
 
 /*5) Con operadores básicos de comparación*/
 /*1*/
-
+SELECT * FROM pedido
+WHERE id_cliente = 2;
 
 /*2*/
-
+SELECT * FROM pedido
+WHERE id_comercial = 1;
 
 /*3*/
-
+SELECT * FROM cliente cl 
+WHERE cl.id = (SELECT pe.id_cliente FROM pedido pe
+			  	WHERE EXTRACT(YEAR FROM pe.fecha) = 2019
+			  	ORDER BY pe.total DESC
+			  	LIMIT 1);
 
 /*4*/
-
+SELECT fecha, total, id_cliente FROM pedido
+WHERE id_cliente = (SELECT id FROM cliente
+					WHERE nombre = 'Pepe' AND apellido1 = 'Ruiz' AND apellido2 = 'Santana')
+ORDER BY total
+LIMIT 1;
 
 /*5*/
 
