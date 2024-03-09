@@ -219,13 +219,10 @@ WHERE cl.id = pe.id_cliente AND EXTRACT(YEAR FROM pe.fecha) = 2017 AND p.total >
 
 /*6) Subconsultas con ALL y ANY*/
 /*1*/
-SELECT *
-FROM pedido p1
-WHERE p1.total >= ALL (
-    SELECT total
-    FROM pedido p2
-    WHERE p1.id <> p2.id
-);
+SELECT * FROM pedido pe1
+WHERE pe1.total >= ALL (SELECT total
+                        FROM pedido pe2
+                        WHERE pe1.id <> pe2.id);
 
 /*2*/
 SELECT * FROM cliente cl
