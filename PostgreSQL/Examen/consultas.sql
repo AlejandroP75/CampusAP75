@@ -189,11 +189,13 @@ ORDER BY anio;
 /*5) Con operadores básicos de comparación*/
 /*1*/
 SELECT * FROM pedido
-WHERE id_cliente = 2;
+WHERE id_cliente = (SELECT id FROM cliente
+				   	WHERE nombre = 'Adela' AND apellido1 = 'Salas'AND apellido2 = 'Díaz');
 
 /*2*/
 SELECT * FROM pedido
-WHERE id_comercial = 1;
+WHERE id_comercial = (SELECT id FROM comercial
+				   	WHERE nombre = 'Daniel' AND apellido1 = 'Sáez' AND apellido2 = 'Vega');
 
 /*3*/
 SELECT * FROM cliente cl 
@@ -210,27 +212,49 @@ ORDER BY total
 LIMIT 1;
 
 /*5*/
-
+SELECT cl.*, pe.* FROM cliente cl, pedido pe
+WHERE cl.id = pe.id_cliente AND EXTRACT(YEAR FROM pe.fecha) = 2017 AND p.total >= (SELECT AVG(total)
+    																				FROM pedido
+    																				WHERE EXTRACT(YEAR FROM fecha) = 2017);
 
 /*6) Subconsultas con ALL y ANY*/
 /*1*/
-
+SELECT *
+FROM pedido p1
+WHERE p1.total >= ALL (
+    SELECT total
+    FROM pedido p2
+    WHERE p1.id <> p2.id
+);
 
 /*2*/
-
+SELECT * FROM cliente cl
+WHERE NOT EXISTS (SELECT *
+    				FROM pedido pe
+    				WHERE pe.id_cliente = cl.id);
 
 /*3*/
-
+SELECT * FROM comercial co
+WHERE NOT EXISTS (SELECT *
+    				FROM pedido pe
+    				WHERE pe.id_comercial = co.id);
 
 /*7) Subconsultas con IN y NOT IN*/
 /*1*/
-
+SELECT * FROM cliente
+WHERE id NOT IN (SELECT id_cliente FROM pedido);
 
 /*2*/
-
+SELECT * FROM comercial
+WHERE id NOT IN (SELECT id_comercial FROM pedido);
 
 /*8) Subconsultas con EXISTS y NOT EXISTS*/
 /*1*/
-
+SELECT * FROM cliente cl
+WHERE NOT EXISTS (SELECT 1 FROM pedido pe
+    				WHERE pe.id_cliente = cl.id);
 
 /*2*/
+SELECT * FROM comercial co
+WHERE NOT EXISTS (SELECT 1 FROM pedido pe
+    				WHERE pe.id_comercial = co.id);
